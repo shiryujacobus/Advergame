@@ -108,7 +108,7 @@ public class CodeSystem : MonoBehaviour
                 ))
             {
                 ShowError(
-                    "Code Invalid"
+                    "Code Invalid!"
                 );
             }
             else if (response.Contains(
@@ -116,7 +116,7 @@ public class CodeSystem : MonoBehaviour
                 ))
             {
                 ShowError(
-                    "Code Invalid"
+                    "Code Invalid!"
                 );
             }
             else
