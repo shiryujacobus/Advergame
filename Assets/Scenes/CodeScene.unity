@@ -764,7 +764,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000011444, y: -56}
+  m_AnchoredPosition: {x: 41, y: -56}
   m_SizeDelta: {x: 256.3082, y: 67.3085}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1239789210
@@ -1126,7 +1126,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 34.25}
+  m_AnchoredPosition: {x: 43, y: 34.25}
   m_SizeDelta: {x: 474.499, y: 68.5005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1556296978
@@ -1285,7 +1285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1900163546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1333,15 +1333,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 2
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -1372,7 +1372,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 83.80478, w: 31.465233}
+  m_margin: {x: 0, y: 0, z: -3.2070618, w: 31.465233}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1402,7 +1402,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 33.4, y: -86.3}
+  m_AnchoredPosition: {x: 43, y: -136}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2145426495
@@ -1436,12 +1436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CodeSystem
   codeInput: {fileID: 1556296978}
   errorText: {fileID: 1900163546}
-  validCodes:
-  - DemiNgopi@1213
-  - KopiEnak1121!
-  - MatchaKopi!2808
-  - Americano_1407
-  - Cafe.Bandara2026
+  googleSheetURL: https://script.google.com/macros/s/AKfycbwSyTIDWR1U8s97qs9eTUF6Nn09mg-7Zt1JlKteHs18R2Ok32sZU3qZR44AMQCNwuHI/exec
   nextSceneName: CafeGame
 --- !u!4 &2145426497
 Transform:
