@@ -25,13 +25,8 @@ public class CustomerRandomizer : MonoBehaviour
 
     void Start()
     {
-        foreach (GameObject customer in customers)
-        {
-            if (customer != null)
-                customer.SetActive(false);
-        }
-
-        StartCoroutine(SpawnCustomers());
+        // Spawn dan pengaturan antrean ditangani
+        // oleh CustomerQueueManager.
     }
 
     IEnumerator SpawnCustomers()
@@ -196,6 +191,18 @@ public class CustomerRandomizer : MonoBehaviour
         if (c4 != null)
             return c4.buyPoint;
 
+        CustomerMovement4 c5 =
+            customer.GetComponent<CustomerMovement4>();
+
+        if (c4 != null)
+            return c5.buyPoint;
+
+        CustomerMovement4 c6 =
+            customer.GetComponent<CustomerMovement4>();
+
+        if (c4 != null)
+            return c6.buyPoint;
+
         return null;
     }
 
@@ -237,6 +244,24 @@ public class CustomerRandomizer : MonoBehaviour
         if (c4 != null)
         {
             c4.buyPoint = buyPoint;
+            return;
+        }
+
+        CustomerMovement1 c5 =
+            customer.GetComponent<CustomerMovement1>();
+
+        if (c5 != null)
+        {
+            c5.buyPoint = buyPoint;
+            return;
+        }
+
+        CustomerMovement1 c6 =
+            customer.GetComponent<CustomerMovement1>();
+
+        if (c6 != null)
+        {
+            c6.buyPoint = buyPoint;
             return;
         }
     }
@@ -284,6 +309,24 @@ public class CustomerRandomizer : MonoBehaviour
         if (c4 != null)
         {
             c4.exitPoint = exitPoint;
+            return;
+        }
+
+        CustomerMovement5 c5 =
+            customer.GetComponent<CustomerMovement5>();
+
+        if (c5 != null)
+        {
+            c5.exitPoint = exitPoint;
+            return;
+        }
+
+        CustomerMovement6 c6 =
+            customer.GetComponent<CustomerMovement6>();
+
+        if (c6 != null)
+        {
+            c6.exitPoint = exitPoint;
             return;
         }
     }

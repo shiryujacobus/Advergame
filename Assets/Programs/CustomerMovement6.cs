@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 
-public class CustomerMovement1 : MonoBehaviour
+public class CustomerMovement6 : MonoBehaviour
 {
     [Header("Movement")]
     public Transform buyPoint;
@@ -105,7 +105,7 @@ public class CustomerMovement1 : MonoBehaviour
                 GenerateRandomOrder();
                 ShowOrder();
 
-                Debug.Log("CUSTOMER 1 SAMPAI BUY POINT!");
+                Debug.Log("CUSTOMER 6 SAMPAI BUY POINT!");
             }
         }
 
@@ -116,7 +116,7 @@ public class CustomerMovement1 : MonoBehaviour
 
             if (waitTimer >= maxWaitTime)
             {
-                Debug.Log("CUSTOMER 1 KEHABISAN WAKTU!");
+                Debug.Log("CUSTOMER 6 KEHABISAN WAKTU!");
 
                 state = 2;
 
@@ -213,13 +213,13 @@ public class CustomerMovement1 : MonoBehaviour
     {
         if (!currentOrders.Contains(itemName))
         {
-            Debug.Log("CUSTOMER 1 TIDAK MEMESAN: " + itemName);
+            Debug.Log("CUSTOMER 6 TIDAK MEMESAN: " + itemName);
             return;
         }
 
         if (receivedOrders.Contains(itemName))
         {
-            Debug.Log("CUSTOMER 1 SUDAH MENERIMA: " + itemName);
+            Debug.Log("CUSTOMER 6 SUDAH MENERIMA: " + itemName);
             return;
         }
 
@@ -264,7 +264,7 @@ public class CustomerMovement1 : MonoBehaviour
         if (scoreManager != null)
             scoreManager.AddScore(100);
 
-        Debug.Log("PESANAN CUSTOMER 1 SELESAI!");
+        Debug.Log("PESANAN CUSTOMER 6 SELESAI!");
     }
 
     public bool IsWaitingForOrder()

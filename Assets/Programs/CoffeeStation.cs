@@ -20,41 +20,34 @@ public class CoffeeStation : MonoBehaviour
 
     void Update()
     {
-        // Tidak sedang membuat coffee
         if (!isBrewing)
             return;
 
         brewTimer += Time.deltaTime;
 
-        // Coffee selesai dibuat
         if (brewTimer >= brewTime)
         {
             isBrewing = false;
             brewTimer = 0f;
             coffeeReady = true;
 
-            // Stop suara mesin
             if (brewingAudio != null)
-            {
                 brewingAudio.Stop();
-            }
 
-            // Isi mug
             if (coffeeMug != null)
-            {
                 coffeeMug.SetCoffeeReady();
-            }
+            else
+                Debug.LogWarning(
+                    "Coffee Mug belum di-assign di CoffeeStation!"
+                );
 
             ShowStatus("Coffee Ready!");
 
+            Debug.Log("COFFEE SUDAH READY!");
             Debug.Log(
-                "COFFEE SUDAH READY!"
-            );
-
-            Debug.Log(
-                "STATUS: Brewing = "
+                "STATUS SETELAH BREWING | Brewing: "
                 + isBrewing
-                + " | Ready = "
+                + " | Ready: "
                 + coffeeReady
             );
         }
@@ -69,49 +62,32 @@ public class CoffeeStation : MonoBehaviour
             + coffeeReady
         );
 
-        // =========================
-        // CEK SEDANG BREWING
-        // =========================
-
         if (isBrewing)
         {
-            Debug.Log(
-                "COFFEE MASIH SEDANG DIBUAT!"
-            );
-
+            Debug.Log("COFFEE MASIH SEDANG DIBUAT!");
             return;
         }
-
-        // =========================
-        // CEK COFFEE MASIH READY
-        // =========================
 
         if (coffeeReady)
         {
-            Debug.Log(
-                "COFFEE MASIH READY!"
-            );
-
+            Debug.Log("COFFEE MASIH READY!");
             return;
         }
-
-        // =========================
-        // MULAI SIKLUS BARU
-        // =========================
 
         isBrewing = true;
         coffeeReady = false;
         brewTimer = 0f;
 
-        // Pastikan mug kosong
         if (coffeeMug != null)
         {
             coffeeMug.SetCoffeeEmpty();
         }
-
-        // =========================
-        // SUARA MESIN
-        // =========================
+        else
+        {
+            Debug.LogWarning(
+                "Coffee Mug belum di-assign di CoffeeStation!"
+            );
+        }
 
         if (brewingAudio != null)
         {
@@ -121,14 +97,11 @@ public class CoffeeStation : MonoBehaviour
 
         ShowStatus("Making Coffee...");
 
+        Debug.Log("COFFEE SEDANG DIBUAT...");
         Debug.Log(
-            "COFFEE SEDANG DIBUAT..."
-        );
-
-        Debug.Log(
-            "STATUS BARU: Brewing = "
+            "STATUS BARU | Brewing: "
             + isBrewing
-            + " | Ready = "
+            + " | Ready: "
             + coffeeReady
         );
     }
@@ -142,34 +115,25 @@ public class CoffeeStation : MonoBehaviour
             + coffeeReady
         );
 
-        // =========================
-        // CEK COFFEE READY
-        // =========================
-
         if (!coffeeReady)
         {
-            Debug.Log(
-                "COFFEE BELUM READY!"
+            Debug.LogWarning(
+                "COFFEE BELUM READY! TakeCoffee tidak mereset status."
             );
-
             return false;
         }
 
-        // =========================
-        // RESET TOTAL SIKLUS
-        // =========================
+        Debug.Log(
+            "STATUS DIUBAH KE KOSONG OLEH TakeCoffee()"
+        );
 
         coffeeReady = false;
         isBrewing = false;
         brewTimer = 0f;
 
-        // Stop suara kalau masih berjalan
         if (brewingAudio != null)
-        {
             brewingAudio.Stop();
-        }
 
-        // Kosongkan mug
         if (coffeeMug != null)
         {
             coffeeMug.SetCoffeeEmpty();
@@ -177,13 +141,8 @@ public class CoffeeStation : MonoBehaviour
 
         HideStatus();
 
-        Debug.Log(
-            "COFFEE DIAMBIL PLAYER!"
-        );
-
-        Debug.Log(
-            "SIKLUS COFFEE DI-RESET!"
-        );
+        Debug.Log("COFFEE DIAMBIL PLAYER!");
+        Debug.Log("SIKLUS COFFEE DI-RESET!");
 
         Debug.Log(
             "STATUS SETELAH DIAMBIL | Brewing: "
@@ -206,16 +165,18 @@ public class CoffeeStation : MonoBehaviour
             coffeeStatusText.GetComponent<TMP_Text>();
 
         if (text != null)
-        {
             text.text = message;
-        }
     }
 
     void HideStatus()
     {
         if (coffeeStatusText != null)
-        {
             coffeeStatusText.SetActive(false);
-        }
+    }
+
+    void OnMouseDown()
+    {
+        Debug.Log("MESIN KOPI DIKLIK!");
+        MakeCoffee();
     }
 }

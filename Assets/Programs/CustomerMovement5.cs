@@ -1,8 +1,9 @@
+
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 
-public class CustomerMovement1 : MonoBehaviour
+public class CustomerMovement5 : MonoBehaviour
 {
     [Header("Movement")]
     public Transform buyPoint;
@@ -11,23 +12,22 @@ public class CustomerMovement1 : MonoBehaviour
     public float waitTime = 3f;
     public float maxWaitTime = 15f;
 
-    private float waitTimer = 0f;
-    private float nextSlotCheck = 0f;
-
-    private bool hasQueueSlot = false;
+    private float waitTimer;
+    private float nextSlotCheck;
+    private bool hasQueueSlot;
     private Transform assignedBuyPoint;
     private Transform assignedWaitPoint;
 
     private float initialSpawnX;
-    private bool spawnFromRight = false;
-    private bool spawnSideDetected = false;
+    private bool spawnFromRight;
+    private bool spawnSideDetected;
 
     [Header("Order UI")]
     public GameObject orderText;
     public ScoreManager scoreManager;
 
     [Header("Sprite Direction")]
-    public bool faceLeft = false;
+    public bool faceLeft;
     public bool spriteFacesRight = true;
 
     [Header("Pastry Orders")]
@@ -41,17 +41,14 @@ public class CustomerMovement1 : MonoBehaviour
         "Roti"
     };
 
-    private int state = 0;
-
-    private List<string> currentOrders = new List<string>();
-    private List<string> receivedOrders = new List<string>();
+    private int state;
+    private readonly List<string> currentOrders = new();
+    private readonly List<string> receivedOrders = new();
 
     void Update()
     {
         CustomerQueueManager queue = CustomerQueueManager.Instance;
-
-        if (queue == null)
-            return;
+        if (queue == null) return;
 
         if (!spawnSideDetected)
         {
@@ -59,7 +56,6 @@ public class CustomerMovement1 : MonoBehaviour
             spawnSideDetected = true;
         }
 
-        // STATE 0: Bergerak ke Buy Point atau menunggu slot.
         if (state == 0)
         {
             if (!hasQueueSlot)
@@ -67,12 +63,8 @@ public class CustomerMovement1 : MonoBehaviour
                 if (Time.time >= nextSlotCheck)
                 {
                     nextSlotCheck = Time.time + 0.5f;
-
                     hasQueueSlot = queue.RequestEntry(
-                        this,
-                        spawnFromRight,
-                        out assignedBuyPoint
-                    );
+                        this, spawnFromRight, out assignedBuyPoint);
 
                     if (hasQueueSlot)
                     {
@@ -84,16 +76,13 @@ public class CustomerMovement1 : MonoBehaviour
                 if (!hasQueueSlot)
                 {
                     assignedWaitPoint = queue.GetWaitPoint(this);
-
                     if (assignedWaitPoint != null)
                         MoveTo(assignedWaitPoint);
-
                     return;
                 }
             }
 
-            if (buyPoint == null)
-                return;
+            if (buyPoint == null) return;
 
             MoveTo(buyPoint);
 
@@ -101,46 +90,36 @@ public class CustomerMovement1 : MonoBehaviour
             {
                 state = 1;
                 waitTimer = 0f;
-
                 GenerateRandomOrder();
                 ShowOrder();
-
-                Debug.Log("CUSTOMER 1 SAMPAI BUY POINT!");
+                Debug.Log("CUSTOMER 5 SAMPAI BUY POINT!");
             }
         }
-
-        // STATE 1: Menunggu pesanan.
         else if (state == 1)
         {
             waitTimer += Time.deltaTime;
 
             if (waitTimer >= maxWaitTime)
             {
-                Debug.Log("CUSTOMER 1 KEHABISAN WAKTU!");
-
+                Debug.Log("CUSTOMER 5 KEHABISAN WAKTU!");
                 state = 2;
-
-                if (orderText != null)
-                    orderText.SetActive(false);
+                if (orderText != null) orderText.SetActive(false);
             }
         }
-
-        // STATE 2: Keluar setelah pesanan selesai atau waktu habis.
         else if (state == 2)
         {
-            if (exitPoint == null)
-                return;
+            if (exitPoint == null) return;
 
             MoveTo(exitPoint);
 
             if (Vector3.Distance(transform.position, exitPoint.position) < 0.05f)
             {
                 queue.ReleaseSlot(this);
-
                 hasQueueSlot = false;
                 assignedBuyPoint = null;
                 assignedWaitPoint = null;
 
+                // Jangan hapus customer dari daftar antrean.
                 gameObject.SetActive(false);
             }
         }
@@ -150,43 +129,30 @@ public class CustomerMovement1 : MonoBehaviour
     {
         currentOrders.Clear();
         receivedOrders.Clear();
-
         currentOrders.Add("Coffee");
 
-        if (pastryOrders == null || pastryOrders.Length == 0)
-            return;
+        if (pastryOrders == null || pastryOrders.Length == 0) return;
 
-        int maxPastries = Mathf.Min(3, pastryOrders.Length);
-        int pastryAmount = Random.Range(1, maxPastries + 1);
+        int amount = Random.Range(1, Mathf.Min(3, pastryOrders.Length) + 1);
+        List<string> available = new(pastryOrders);
 
-        List<string> availablePastry = new List<string>(pastryOrders);
-
-        for (int i = 0; i < pastryAmount; i++)
+        for (int i = 0; i < amount && available.Count > 0; i++)
         {
-            if (availablePastry.Count == 0)
-                break;
-
-            int randomIndex = Random.Range(0, availablePastry.Count);
-
-            currentOrders.Add(availablePastry[randomIndex]);
-            availablePastry.RemoveAt(randomIndex);
+            int index = Random.Range(0, available.Count);
+            currentOrders.Add(available[index]);
+            available.RemoveAt(index);
         }
     }
 
     void ShowOrder()
     {
-        if (orderText == null)
-            return;
+        if (orderText == null) return;
 
         orderText.SetActive(true);
-
         TMP_Text text = orderText.GetComponent<TMP_Text>();
-
-        if (text == null)
-            return;
+        if (text == null) return;
 
         string display = "Order:\n";
-
         foreach (string order in currentOrders)
             display += "• " + order + "\n";
 
@@ -195,139 +161,95 @@ public class CustomerMovement1 : MonoBehaviour
 
     public void ReceiveCoffee()
     {
-        if (state != 1)
-            return;
-
-        ReceiveItem("Coffee");
+        if (state == 1) ReceiveItem("Coffee");
     }
 
     public void ReceivePastry(string pastryName)
     {
-        if (state != 1)
-            return;
-
-        ReceiveItem(pastryName);
+        if (state == 1) ReceiveItem(pastryName);
     }
 
     void ReceiveItem(string itemName)
     {
         if (!currentOrders.Contains(itemName))
         {
-            Debug.Log("CUSTOMER 1 TIDAK MEMESAN: " + itemName);
+            Debug.Log("CUSTOMER 5 TIDAK MEMESAN: " + itemName);
             return;
         }
 
         if (receivedOrders.Contains(itemName))
         {
-            Debug.Log("CUSTOMER 1 SUDAH MENERIMA: " + itemName);
+            Debug.Log("CUSTOMER 5 SUDAH MENERIMA: " + itemName);
             return;
         }
 
         receivedOrders.Add(itemName);
-
         UpdateOrderDisplay();
         CheckOrderComplete();
     }
 
     void UpdateOrderDisplay()
     {
-        if (orderText == null)
-            return;
+        if (orderText == null) return;
 
         TMP_Text text = orderText.GetComponent<TMP_Text>();
-
-        if (text == null)
-            return;
+        if (text == null) return;
 
         string display = "Order:\n";
-
         foreach (string order in currentOrders)
-        {
             display += receivedOrders.Contains(order)
                 ? "✓ " + order + "\n"
                 : "• " + order + "\n";
-        }
 
         text.text = display;
     }
 
     void CheckOrderComplete()
     {
-        if (receivedOrders.Count < currentOrders.Count)
-            return;
+        if (receivedOrders.Count < currentOrders.Count) return;
 
         state = 2;
+        if (orderText != null) orderText.SetActive(false);
+        if (scoreManager != null) scoreManager.AddScore(100);
 
-        if (orderText != null)
-            orderText.SetActive(false);
-
-        if (scoreManager != null)
-            scoreManager.AddScore(100);
-
-        Debug.Log("PESANAN CUSTOMER 1 SELESAI!");
+        Debug.Log("PESANAN CUSTOMER 5 SELESAI!");
     }
 
-    public bool IsWaitingForOrder()
-    {
-        return state == 1;
-    }
+    public bool IsWaitingForOrder() => state == 1;
 
     void MoveTo(Transform target)
     {
-        if (target == null)
-            return;
+        if (target == null) return;
 
         bool movingLeft = target.position.x < transform.position.x;
-
         bool flip = spriteFacesRight ? movingLeft : !movingLeft;
 
         transform.position = Vector3.MoveTowards(
-            transform.position,
-            target.position,
-            speed * Time.deltaTime
-        );
+            transform.position, target.position, speed * Time.deltaTime);
 
-        transform.localScale = new Vector3(
-            flip ? -1f : 1f,
-            1f,
-            1f
-        );
+        transform.localScale = new Vector3(flip ? -1f : 1f, 1f, 1f);
 
         if (orderText != null)
-        {
-            orderText.transform.localScale = new Vector3(
-                flip ? -1f : 1f,
-                1f,
-                1f
-            );
-        }
+            orderText.transform.localScale =
+                new Vector3(flip ? -1f : 1f, 1f, 1f);
     }
 
     void OnEnable()
     {
         initialSpawnX = transform.position.x;
         spawnSideDetected = false;
-
         state = 0;
         waitTimer = 0f;
         nextSlotCheck = 0f;
         hasQueueSlot = false;
-
         assignedBuyPoint = null;
         assignedWaitPoint = null;
 
         currentOrders.Clear();
         receivedOrders.Clear();
 
-        if (orderText != null)
-            orderText.SetActive(false);
+        if (orderText != null) orderText.SetActive(false);
     }
 
-    void OnDisable()
-    {
-        CustomerQueueManager queue = CustomerQueueManager.Instance;
-
-        if (queue != null)
-            queue.RemoveCustomer(this);
-    }
+    // Sengaja tidak memanggil RemoveCustomer di OnDisable.
 }
