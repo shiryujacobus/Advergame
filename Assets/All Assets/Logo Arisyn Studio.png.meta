@@ -1,0 +1,535 @@
+fileFormatVersion: 2
+guid: ec01cf1ca110f9743bce0875ec2d3f74
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -130213257598168916
+    second: Logo Arisyn Studio_0
+  - first:
+      213: -4843456341285630940
+    second: Logo Arisyn Studio_1
+  - first:
+      213: 3208484701893052128
+    second: Logo Arisyn Studio_2
+  - first:
+      213: 5331168545360933945
+    second: Logo Arisyn Studio_3
+  - first:
+      213: -7221872744933510018
+    second: Logo Arisyn Studio_4
+  - first:
+      213: 6130786660298756849
+    second: Logo Arisyn Studio_5
+  - first:
+      213: 586416677659158793
+    second: Logo Arisyn Studio_6
+  - first:
+      213: -8036002099134708286
+    second: Logo Arisyn Studio_7
+  - first:
+      213: 532070632536796369
+    second: Logo Arisyn Studio_8
+  - first:
+      213: -6712428849608068791
+    second: Logo Arisyn Studio_9
+  - first:
+      213: 261945865544182255
+    second: Logo Arisyn Studio_10
+  - first:
+      213: -2122457957882668574
+    second: Logo Arisyn Studio_11
+  - first:
+      213: 4643888650597527179
+    second: Logo Arisyn Studio_12
+  - first:
+      213: -5757048515433011900
+    second: Logo Arisyn Studio_13
+  - first:
+      213: 978577229612921772
+    second: Logo Arisyn Studio_14
+  - first:
+      213: 2126612908307298559
+    second: Logo Arisyn Studio_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Logo Arisyn Studio_0
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 861
+        width: 542
+        height: 698
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca090db6bb3613ef0800000000000000
+      internalID: -130213257598168916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo Arisyn Studio_1
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 861
+        width: 570
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42c8e8c8e1698ccb0800000000000000
+      internalID: -4843456341285630940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo Arisyn Studio_2
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 653
+        width: 144
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e64c9b46d3d68c20800000000000000
+      internalID: 3208484701893052128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo Arisyn Studio_3
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 653
+        width: 126
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93479f7db8d1cf940800000000000000
+      internalID: 5331168545360933945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo Arisyn Studio_4
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 653
+        width: 34
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e74b9296001c6cb90800000000000000
+      internalID: -7221872744933510018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo Arisyn Studio_5
+      rect:
+        serializedVersion: 2
+        x: 1013
+        y: 653
+        width: 126
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f29fc83cfde41550800000000000000
+      internalID: 6130786660298756849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo Arisyn Studio_6
+      rect:
+        serializedVersion: 2
+        x: 1229
+        y: 653
+        width: 150
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9092d328cde532800800000000000000
+      internalID: 586416677659158793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo Arisyn Studio_7
+      rect:
+        serializedVersion: 2
+        x: 1477
+        y: 653
+        width: 130
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c548cadaa26a7090800000000000000
+      internalID: -8036002099134708286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo Arisyn Studio_8
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 560
+        width: 227
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dce5c7db6b426700800000000000000
+      internalID: 532070632536796369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo Arisyn Studio_9
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 533
+        width: 50
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 941f6077689a8d2a0800000000000000
+      internalID: -6712428849608068791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo Arisyn Studio_10
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 536
+        width: 50
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe9a42a706e92a300800000000000000
+      internalID: 261945865544182255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo Arisyn Studio_11
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 533
+        width: 50
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e9d3b98bb38b82e0800000000000000
+      internalID: -2122457957882668574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo Arisyn Studio_12
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 537
+        width: 50
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8e65539f18627040800000000000000
+      internalID: 4643888650597527179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo Arisyn Studio_13
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 536
+        width: 23
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 445ecea90eada10b0800000000000000
+      internalID: -5757048515433011900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo Arisyn Studio_14
+      rect:
+        serializedVersion: 2
+        x: 1189
+        y: 533
+        width: 58
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca33d5c3eca949d00800000000000000
+      internalID: 978577229612921772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo Arisyn Studio_15
+      rect:
+        serializedVersion: 2
+        x: 1285
+        y: 559
+        width: 230
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff8ba6e3c2f338d10800000000000000
+      internalID: 2126612908307298559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Logo Arisyn Studio_0: -130213257598168916
+      Logo Arisyn Studio_1: -4843456341285630940
+      Logo Arisyn Studio_10: 261945865544182255
+      Logo Arisyn Studio_11: -2122457957882668574
+      Logo Arisyn Studio_12: 4643888650597527179
+      Logo Arisyn Studio_13: -5757048515433011900
+      Logo Arisyn Studio_14: 978577229612921772
+      Logo Arisyn Studio_15: 2126612908307298559
+      Logo Arisyn Studio_2: 3208484701893052128
+      Logo Arisyn Studio_3: 5331168545360933945
+      Logo Arisyn Studio_4: -7221872744933510018
+      Logo Arisyn Studio_5: 6130786660298756849
+      Logo Arisyn Studio_6: 586416677659158793
+      Logo Arisyn Studio_7: -8036002099134708286
+      Logo Arisyn Studio_8: 532070632536796369
+      Logo Arisyn Studio_9: -6712428849608068791
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
