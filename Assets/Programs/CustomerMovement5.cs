@@ -114,14 +114,20 @@ public class CustomerMovement5 : MonoBehaviour
 
             if (Vector3.Distance(transform.position, exitPoint.position) < 0.05f)
             {
-                queue.ReleaseSlot(this);
                 hasQueueSlot = false;
                 assignedBuyPoint = null;
                 assignedWaitPoint = null;
 
-                // Jangan hapus customer dari daftar antrean.
-                gameObject.SetActive(false);
+                if (orderText != null)
+                    orderText.SetActive(false);
+
+                queue.RequeueCustomer(this, transform.position, 0f);
+
+                state = 0;
+                waitTimer = 0f;
+                nextSlotCheck = Time.time + queue.spawnDelay;
             }
+
         }
     }
 

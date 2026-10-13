@@ -4,20 +4,36 @@ using UnityEngine.SceneManagement;
 
 public class GameTimer : MonoBehaviour
 {
+    [Header("Timer")]
     public float timeRemaining = 60f;
-
     public TMP_Text timerText;
     public GameObject timeUpPanel;
 
+    [Header("Score")]
     public ScoreManager scoreManager;
     public TMP_Text scoreText;
+    public TMP_Text ordersAcceptedText;
 
+    [Header("Gameplay BGM")]
+    public AudioSource gameplayBGM;
+
+    [Header("Countdown SFX")]
+    public AudioSource tickAudioSource;
+    public AudioSource bellAudioSource;
+    public AudioClip tickSFX;
+    public AudioClip completeBellSFX;
+
+    private int lastPlayedSecond = -1;
     private bool timerRunning = true;
 
     void Start()
     {
+        // Pastikan panel Time's Up tersembunyi saat game dimulai.
         if (timeUpPanel != null)
             timeUpPanel.SetActive(false);
+
+        // Pastikan waktu berjalan normal.
+        Time.timeScale = 1f;
 
         UpdateTimerDisplay();
     }
@@ -35,21 +51,19 @@ public class GameTimer : MonoBehaviour
             timerRunning = false;
 
             UpdateTimerDisplay();
+            PlayCountdownSFX();
             TimeUp();
-
             return;
         }
 
         UpdateTimerDisplay();
+        PlayCountdownSFX();
     }
 
     void UpdateTimerDisplay()
     {
-        int minutes =
-            Mathf.FloorToInt(timeRemaining / 60f);
-
-        int seconds =
-            Mathf.FloorToInt(timeRemaining % 60f);
+        int minutes = Mathf.FloorToInt(timeRemaining / 60f);
+        int seconds = Mathf.FloorToInt(timeRemaining % 60f);
 
         if (timerText != null)
         {
@@ -59,27 +73,76 @@ public class GameTimer : MonoBehaviour
         }
     }
 
+    void PlayCountdownSFX()
+    {
+        int currentSecond = Mathf.CeilToInt(timeRemaining);
+
+        if (currentSecond <= 10 &&
+            currentSecond >= 1 &&
+            currentSecond != lastPlayedSecond)
+        {
+            if (tickAudioSource != null && tickSFX != null)
+            {
+                tickAudioSource.Stop();
+                tickAudioSource.PlayOneShot(tickSFX);
+            }
+
+            lastPlayedSecond = currentSecond;
+        }
+    }
+
     void TimeUp()
     {
         Debug.Log("TIME'S UP!");
 
-        if (scoreText != null && scoreManager != null)
+        // Hentikan BGM gameplay.
+        if (gameplayBGM != null)
+            gameplayBGM.Stop();
+
+        // Hentikan suara countdown.
+        if (tickAudioSource != null)
+            tickAudioSource.Stop();
+
+        // Putar suara bel ketika waktu habis.
+        if (bellAudioSource != null && completeBellSFX != null)
+            bellAudioSource.PlayOneShot(completeBellSFX);
+
+        // Tampilkan skor akhir.
+        if (scoreManager != null)
         {
-            scoreText.text =
-                "FINAL SCORE: " +
-                scoreManager.GetScore();
+            if (scoreText != null)
+            {
+                scoreText.text =
+                    "FINAL SCORE: " + scoreManager.GetScore();
+            }
+
+            if (ordersAcceptedText != null)
+            {
+                ordersAcceptedText.text =
+                    "ORDERS ACCEPTED: " +
+                    scoreManager.GetOrdersAccepted();
+            }
         }
 
+        // Tampilkan panel Time's Up.
         if (timeUpPanel != null)
             timeUpPanel.SetActive(true);
 
+        // Jeda gameplay.
         Time.timeScale = 0f;
     }
 
     public void RetryGame()
     {
+        // Pulihkan waktu sebelum memuat ulang scene.
         Time.timeScale = 1f;
 
+        SceneManager.LoadScene("CafeGame");
+    }
+
+    public void GoHome()
+    {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("CodeScene");
     }
 }

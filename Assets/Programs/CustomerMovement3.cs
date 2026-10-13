@@ -135,14 +135,20 @@ public class CustomerMovement3 : MonoBehaviour
 
             if (Vector3.Distance(transform.position, exitPoint.position) < 0.05f)
             {
-                queue.ReleaseSlot(this);
-
                 hasQueueSlot = false;
                 assignedBuyPoint = null;
                 assignedWaitPoint = null;
 
-                gameObject.SetActive(false);
+                if (orderText != null)
+                    orderText.SetActive(false);
+
+                queue.RequeueCustomer(this, transform.position, 0f);
+
+                state = 0;
+                waitTimer = 0f;
+                nextSlotCheck = Time.time + queue.spawnDelay;
             }
+
         }
     }
 

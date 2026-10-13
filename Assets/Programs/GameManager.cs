@@ -7,32 +7,57 @@ public class GameManager : MonoBehaviour
     [Header("Coffee Drag")]
     public GameObject draggableCoffeePrefab;
 
-    [Header("Coffee Station")]
-    public CoffeeStation coffeeStation;
+    [Header("Coffee Stations")]
+    public CoffeeStation coffeeStationLeft;
+    public CoffeeStation coffeeStationMid;
+    public CoffeeStation coffeeStationRight;
 
     private GameObject draggedCoffee;
     private bool isDraggingCoffee = false;
     private Vector3 dragOffset;
 
+    // Menyimpan mug dan mesin asal kopi yang sedang di-drag.
+    private CoffeeItem draggedSourceMug;
+    private CoffeeStation draggedFromStation;
+
     void Update()
     {
+        // KONTROL MESIN KOPI DENGAN KEYBOARD
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (coffeeStationLeft != null)
+                coffeeStationLeft.MakeCoffee();
+            else
+                Debug.LogWarning("CoffeeMachineLeft belum di-assign!");
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            if (coffeeStationMid != null)
+                coffeeStationMid.MakeCoffee();
+            else
+                Debug.LogWarning("CoffeeMachineMid belum di-assign!");
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (coffeeStationRight != null)
+                coffeeStationRight.MakeCoffee();
+            else
+                Debug.LogWarning("CoffeeMachineRight belum di-assign!");
+        }
+
         if (isDraggingCoffee && draggedCoffee != null)
         {
             Vector3 mousePosition =
-                Camera.main.ScreenToWorldPoint(
-                    Input.mousePosition
-                );
+                Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            mousePosition.z =
-                draggedCoffee.transform.position.z;
-
-            draggedCoffee.transform.position =
-                mousePosition + dragOffset;
+            mousePosition.z = draggedCoffee.transform.position.z;
+            draggedCoffee.transform.position = mousePosition + dragOffset;
 
             if (Input.GetMouseButtonUp(0))
             {
                 Debug.Log("COFFEE SELESAI DI-DRAG");
-
                 CheckCoffeeCustomer();
                 return;
             }
@@ -49,9 +74,7 @@ public class GameManager : MonoBehaviour
             }
 
             Vector2 mousePosition =
-                Camera.main.ScreenToWorldPoint(
-                    Input.mousePosition
-                );
+                Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             Collider2D[] hits =
                 Physics2D.OverlapPointAll(mousePosition);
@@ -70,17 +93,12 @@ public class GameManager : MonoBehaviour
                     Debug.Log(
                         "COFFEE BELUM READY! MUG TIDAK BISA DIAMBIL."
                     );
-
                     continue;
                 }
 
                 Debug.Log("MUG SIAP DIAMBIL!");
 
-                StartCoffeeDrag(
-                    colliderHit.gameObject,
-                    mousePosition
-                );
-
+                StartCoffeeDrag(coffeeItem, mousePosition);
                 return;
             }
 
@@ -104,20 +122,42 @@ public class GameManager : MonoBehaviour
             }
 
             if (hits.Length == 0)
-            {
                 Debug.Log("KLIK TIDAK MENGENAI OBJEK");
-            }
         }
+    }
+
+    // MENCARI MESIN BERDASARKAN MUG ASAL
+    CoffeeStation FindStationForMug(CoffeeItem sourceMug)
+    {
+        if (sourceMug == null)
+            return null;
+
+        CoffeeStation[] stations =
+            FindObjectsByType<CoffeeStation>(FindObjectsSortMode.None);
+
+        foreach (CoffeeStation station in stations)
+        {
+            if (station != null && station.coffeeMug == sourceMug)
+                return station;
+        }
+
+        return null;
     }
 
     // MULAI DRAG COFFEE
     void StartCoffeeDrag(
-        GameObject mug,
+        CoffeeItem sourceMug,
         Vector2 mousePosition
     )
     {
         if (draggedCoffee != null)
             return;
+
+        if (sourceMug == null)
+        {
+            Debug.LogError("Coffee Item sumber tidak ditemukan!");
+            return;
+        }
 
         if (draggableCoffeePrefab == null)
         {
@@ -127,16 +167,20 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        // Pastikan objek sumber bukan gelas utama
-        if (coffeeStation != null &&
-            coffeeStation.coffeeMug != null &&
-            mug == coffeeStation.coffeeMug.gameObject)
+        // Temukan mesin yang terhubung dengan mug yang diklik.
+        CoffeeStation sourceStation = FindStationForMug(sourceMug);
+
+        if (sourceStation == null)
         {
-            Debug.Log(
-                "Mug utama menjadi sumber drag. " +
-                "Membuat gelas duplikat."
+            Debug.LogError(
+                "Mesin untuk mug " + sourceMug.name +
+                " tidak ditemukan. Periksa field Coffee Mug di CoffeeStation."
             );
+            return;
         }
+
+        draggedSourceMug = sourceMug;
+        draggedFromStation = sourceStation;
 
         draggedCoffee = Instantiate(
             draggableCoffeePrefab,
@@ -153,23 +197,27 @@ public class GameManager : MonoBehaviour
         Debug.Log(
             "COFFEE DUPLIKAT DIBUAT: " +
             draggedCoffee.name +
-            " | ID: " +
-            draggedCoffee.GetEntityId()
+            " | Mug sumber: " + draggedSourceMug.name +
+            " | Mesin sumber: " + draggedFromStation.name +
+            " | ID: " + draggedCoffee.GetEntityId()
         );
     }
 
     // CEK CUSTOMER
-void CheckCoffeeCustomer()
+    void CheckCoffeeCustomer()
     {
         if (draggedCoffee == null)
             return;
 
-        if (coffeeStation == null)
-            coffeeStation = FindFirstObjectByType<CoffeeStation>();
-
-        if (coffeeStation == null || !coffeeStation.coffeeReady)
+        // Pastikan mesin asal kopi masih tersedia dan kopinya siap.
+        if (draggedFromStation == null ||
+            !draggedFromStation.coffeeReady ||
+            draggedSourceMug == null ||
+            !draggedSourceMug.coffeeReady)
         {
-            Debug.LogWarning("Kopi belum siap atau mesin tidak ditemukan.");
+            Debug.LogWarning(
+                "Kopi belum siap atau mesin asal tidak ditemukan."
+            );
             ClearDraggedCoffee();
             return;
         }
@@ -198,12 +246,18 @@ void CheckCoffeeCustomer()
 
             bool waiting = false;
 
-            if (customer is CustomerMovement1 a) waiting = a.IsWaitingForOrder();
-            else if (customer is CustomerMovement2 b) waiting = b.IsWaitingForOrder();
-            else if (customer is CustomerMovement3 c) waiting = c.IsWaitingForOrder();
-            else if (customer is CustomerMovement4 d) waiting = d.IsWaitingForOrder();
-            else if (customer is CustomerMovement5 e) waiting = e.IsWaitingForOrder();
-            else if (customer is CustomerMovement6 f) waiting = f.IsWaitingForOrder();
+            if (customer is CustomerMovement1 a)
+                waiting = a.IsWaitingForOrder();
+            else if (customer is CustomerMovement2 b)
+                waiting = b.IsWaitingForOrder();
+            else if (customer is CustomerMovement3 c)
+                waiting = c.IsWaitingForOrder();
+            else if (customer is CustomerMovement4 d)
+                waiting = d.IsWaitingForOrder();
+            else if (customer is CustomerMovement5 e)
+                waiting = e.IsWaitingForOrder();
+            else if (customer is CustomerMovement6 f)
+                waiting = f.IsWaitingForOrder();
 
             if (!waiting)
                 return;
@@ -230,14 +284,17 @@ void CheckCoffeeCustomer()
         // Batasi jarak penyerahan.
         const float maxDropDistance = 2.5f;
 
-        if (closestCustomer == null || closestDistance > maxDropDistance)
+        if (closestCustomer == null ||
+            closestDistance > maxDropDistance)
         {
-            Debug.Log("Tidak ada customer yang cukup dekat untuk menerima kopi.");
+            Debug.Log(
+                "Tidak ada customer yang cukup dekat untuk menerima kopi."
+            );
             ClearDraggedCoffee();
             return;
         }
 
-        // Pastikan customer menerima kopi sebelum mesin dikosongkan.
+        // Serahkan kopi ke customer.
         if (closestCustomer is CustomerMovement1 customer1)
             customer1.ReceiveCoffee();
         else if (closestCustomer is CustomerMovement2 customer2)
@@ -251,8 +308,8 @@ void CheckCoffeeCustomer()
         else if (closestCustomer is CustomerMovement6 customer6)
             customer6.ReceiveCoffee();
 
-        // Konsumsi kopi setelah fungsi penerimaan dipanggil.
-        bool coffeeTaken = coffeeStation.TakeCoffee();
+        // Kosongkan HANYA mesin asal kopi yang sedang diserahkan.
+        bool coffeeTaken = draggedFromStation.TakeCoffee();
 
         if (!coffeeTaken)
         {
@@ -262,14 +319,12 @@ void CheckCoffeeCustomer()
         }
 
         Debug.Log(
-            "Kopi diserahkan ke " + closestCustomer.name
+            "Kopi dari " + draggedFromStation.name +
+            " diserahkan ke " + closestCustomer.name
         );
 
         DestroyDraggedCoffeeSafely();
-
-        draggedCoffee = null;
-        isDraggingCoffee = false;
-        dragOffset = Vector3.zero;
+        ResetDragState();
     }
 
     // HAPUS GELAS DRAG DENGAN PEMERIKSAAN
@@ -278,44 +333,42 @@ void CheckCoffeeCustomer()
         if (draggedCoffee == null)
             return;
 
-        GameObject mainMug = null;
-
-        if (coffeeStation != null &&
-            coffeeStation.coffeeMug != null)
-        {
-            mainMug = coffeeStation.coffeeMug.gameObject;
-        }
-
-        if (draggedCoffee == mainMug)
+        // Jangan pernah menghapus mug utama.
+        if (draggedSourceMug != null &&
+            draggedCoffee == draggedSourceMug.gameObject)
         {
             Debug.LogError(
                 "BUG: draggedCoffee adalah GELAS UTAMA! " +
                 "Penghapusan dibatalkan."
             );
-
             return;
         }
 
         Debug.Log(
             "MENGHAPUS GELAS DRAG: " +
             draggedCoffee.name +
-            " | ID: " +
-            draggedCoffee.GetEntityId()
+            " | ID: " + draggedCoffee.GetEntityId()
         );
 
         Destroy(draggedCoffee);
+    }
+
+    // RESET STATUS DRAG
+    void ResetDragState()
+    {
+        draggedCoffee = null;
+        draggedSourceMug = null;
+        draggedFromStation = null;
+        isDraggingCoffee = false;
+        dragOffset = Vector3.zero;
     }
 
     // RESET DRAG SAAT PENYERAHAN GAGAL
     void ClearDraggedCoffee()
     {
         if (draggedCoffee != null)
-        {
             DestroyDraggedCoffeeSafely();
-            draggedCoffee = null;
-        }
 
-        isDraggingCoffee = false;
-        dragOffset = Vector3.zero;
+        ResetDragState();
     }
 }

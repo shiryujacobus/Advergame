@@ -3,11 +3,12 @@ using TMPro;
 
 public class CoffeeStation : MonoBehaviour
 {
+    [Header("Coffee Status")]
     public bool coffeeReady = false;
     public bool isBrewing = false;
-
     public float brewTime = 3f;
 
+    [Header("Coffee UI")]
     public GameObject coffeeStatusText;
 
     [Header("Coffee Mug")]
@@ -17,6 +18,55 @@ public class CoffeeStation : MonoBehaviour
     public AudioSource brewingAudio;
 
     private float brewTimer = 0f;
+
+    void Awake()
+    {
+        ResolveCoffeeMug();
+    }
+
+    void ResolveCoffeeMug()
+    {
+        // Cari mug berdasarkan nama pasangan mesin.
+        string stationName = gameObject.name;
+
+        if (stationName.StartsWith("CoffeeMachine"))
+        {
+            string suffix =
+                stationName.Substring("CoffeeMachine".Length);
+
+            string expectedMugName = "Mug" + suffix;
+
+            CoffeeItem[] mugs =
+                FindObjectsByType<CoffeeItem>(
+                    FindObjectsSortMode.None
+                );
+
+            foreach (CoffeeItem mug in mugs)
+            {
+                if (mug != null &&
+                    mug.gameObject.name == expectedMugName)
+                {
+                    coffeeMug = mug;
+                    break;
+                }
+            }
+        }
+
+        if (coffeeMug == null)
+        {
+            Debug.LogError(
+                gameObject.name +
+                ": Mug tidak ditemukan! Periksa nama MugLeft, MugMid, atau MugRight."
+            );
+        }
+        else
+        {
+            Debug.Log(
+                gameObject.name +
+                " terhubung ke " + coffeeMug.gameObject.name
+            );
+        }
+    }
 
     void Update()
     {
@@ -36,58 +86,42 @@ public class CoffeeStation : MonoBehaviour
 
             if (coffeeMug != null)
                 coffeeMug.SetCoffeeReady();
-            else
-                Debug.LogWarning(
-                    "Coffee Mug belum di-assign di CoffeeStation!"
-                );
 
             ShowStatus("Coffee Ready!");
 
-            Debug.Log("COFFEE SUDAH READY!");
             Debug.Log(
-                "STATUS SETELAH BREWING | Brewing: "
-                + isBrewing
-                + " | Ready: "
-                + coffeeReady
+                gameObject.name +
+                " SELESAI BREWING | Mug: " +
+                (coffeeMug != null
+                    ? coffeeMug.gameObject.name
+                    : "NULL")
             );
         }
     }
 
     public void MakeCoffee()
     {
+        ResolveCoffeeMug();
+
         Debug.Log(
-            "MAKE COFFEE DIPANGGIL | Brewing: "
-            + isBrewing
-            + " | Ready: "
-            + coffeeReady
+            gameObject.name +
+            " DIKLIK | Brewing: " + isBrewing +
+            " | Ready: " + coffeeReady +
+            " | Mug: " +
+            (coffeeMug != null
+                ? coffeeMug.gameObject.name
+                : "NULL")
         );
 
-        if (isBrewing)
-        {
-            Debug.Log("COFFEE MASIH SEDANG DIBUAT!");
+        if (isBrewing || coffeeReady)
             return;
-        }
-
-        if (coffeeReady)
-        {
-            Debug.Log("COFFEE MASIH READY!");
-            return;
-        }
 
         isBrewing = true;
         coffeeReady = false;
         brewTimer = 0f;
 
         if (coffeeMug != null)
-        {
             coffeeMug.SetCoffeeEmpty();
-        }
-        else
-        {
-            Debug.LogWarning(
-                "Coffee Mug belum di-assign di CoffeeStation!"
-            );
-        }
 
         if (brewingAudio != null)
         {
@@ -96,36 +130,12 @@ public class CoffeeStation : MonoBehaviour
         }
 
         ShowStatus("Making Coffee...");
-
-        Debug.Log("COFFEE SEDANG DIBUAT...");
-        Debug.Log(
-            "STATUS BARU | Brewing: "
-            + isBrewing
-            + " | Ready: "
-            + coffeeReady
-        );
     }
 
     public bool TakeCoffee()
     {
-        Debug.Log(
-            "TAKE COFFEE DIPANGGIL | Brewing: "
-            + isBrewing
-            + " | Ready: "
-            + coffeeReady
-        );
-
         if (!coffeeReady)
-        {
-            Debug.LogWarning(
-                "COFFEE BELUM READY! TakeCoffee tidak mereset status."
-            );
             return false;
-        }
-
-        Debug.Log(
-            "STATUS DIUBAH KE KOSONG OLEH TakeCoffee()"
-        );
 
         coffeeReady = false;
         isBrewing = false;
@@ -135,21 +145,11 @@ public class CoffeeStation : MonoBehaviour
             brewingAudio.Stop();
 
         if (coffeeMug != null)
-        {
             coffeeMug.SetCoffeeEmpty();
-        }
 
         HideStatus();
 
-        Debug.Log("COFFEE DIAMBIL PLAYER!");
-        Debug.Log("SIKLUS COFFEE DI-RESET!");
-
-        Debug.Log(
-            "STATUS SETELAH DIAMBIL | Brewing: "
-            + isBrewing
-            + " | Ready: "
-            + coffeeReady
-        );
+        Debug.Log(gameObject.name + " KOPI DIAMBIL!");
 
         return true;
     }
@@ -172,11 +172,5 @@ public class CoffeeStation : MonoBehaviour
     {
         if (coffeeStatusText != null)
             coffeeStatusText.SetActive(false);
-    }
-
-    void OnMouseDown()
-    {
-        Debug.Log("MESIN KOPI DIKLIK!");
-        MakeCoffee();
     }
 }

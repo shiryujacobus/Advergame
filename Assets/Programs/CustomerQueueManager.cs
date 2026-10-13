@@ -243,4 +243,34 @@ public class CustomerQueueManager : MonoBehaviour
         waiting.Remove(c);
         sides.Remove(c);
     }
+
+    public void RequeueCustomer(MonoBehaviour c, Vector3 spawnPosition, float yOffset)
+    {
+        if (c == null)
+            return;
+
+        ReleaseSlot(c);
+        waiting.Remove(c);
+
+        // Pilih sisi spawn baru secara acak.
+        bool fromRight = Random.Range(0, 2) == 1;
+        sides[c] = fromRight;
+
+        Transform start = fromRight ? customerStartRight : customerStartLeft;
+
+        if (start != null)
+        {
+            Vector3 pos = start.position;
+            pos.y += yOffset;
+            c.transform.position = pos;
+        }
+        else
+        {
+            c.transform.position = spawnPosition;
+        }
+
+        // Masukkan kembali ke antrean.
+        waiting.Add(c);
+    }
+
 }
