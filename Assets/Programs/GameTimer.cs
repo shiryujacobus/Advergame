@@ -23,11 +23,20 @@ public class GameTimer : MonoBehaviour
     public AudioClip tickSFX;
     public AudioClip completeBellSFX;
 
+    [Header("Leaderboard")]
+    private string playerName = "Player";
+    private bool scoreSaved = false;
+
     private int lastPlayedSecond = -1;
     private bool timerRunning = true;
 
     void Start()
     {
+        // Ambil nama pemain yang sudah disimpan.
+        playerName = PlayerPrefs.GetString("PlayerName", "Player");
+
+        Debug.Log("Nama pemain untuk leaderboard: " + playerName);
+
         // Pastikan panel Time's Up tersembunyi saat game dimulai.
         if (timeUpPanel != null)
             timeUpPanel.SetActive(false);
@@ -94,6 +103,16 @@ public class GameTimer : MonoBehaviour
     void TimeUp()
     {
         Debug.Log("TIME'S UP!");
+
+        if (!scoreSaved && scoreManager != null)
+        {
+            LeaderboardManager.SaveScore(
+                playerName,
+                scoreManager.GetScore()
+            );
+
+            scoreSaved = true;
+        }
 
         // Hentikan BGM gameplay.
         if (gameplayBGM != null)
