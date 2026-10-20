@@ -67,71 +67,60 @@ public class DraggableCoffee : MonoBehaviour
         transform.position = mousePosition + offset;
     }
 
-void OnMouseUp()
+    void OnMouseUp()
     {
-        if (!isDragging)
-            return;
-
+        if (!isDragging) return;
         isDragging = false;
 
         Collider2D[] hits = Physics2D.OverlapCircleAll(
             transform.position,
-            0.5f
+            1.5f
         );
 
         foreach (Collider2D hit in hits)
         {
-            CustomerMovement1 c1 =
-                hit.GetComponentInParent<CustomerMovement1>();
+            CustomerMovement1 c1 = hit.GetComponentInParent<CustomerMovement1>();
             if (c1 != null && c1.IsWaitingForOrder())
             {
                 DeliverCoffee(c1.ReceiveCoffee, "CUSTOMER 1");
                 return;
             }
 
-            CustomerMovement2 c2 =
-                hit.GetComponentInParent<CustomerMovement2>();
+            CustomerMovement2 c2 = hit.GetComponentInParent<CustomerMovement2>();
             if (c2 != null && c2.IsWaitingForOrder())
             {
                 DeliverCoffee(c2.ReceiveCoffee, "CUSTOMER 2");
                 return;
             }
 
-            CustomerMovement3 c3 =
-                hit.GetComponentInParent<CustomerMovement3>();
+            CustomerMovement3 c3 = hit.GetComponentInParent<CustomerMovement3>();
             if (c3 != null && c3.IsWaitingForOrder())
             {
                 DeliverCoffee(c3.ReceiveCoffee, "CUSTOMER 3");
                 return;
             }
 
-            CustomerMovement4 c4 =
-                hit.GetComponentInParent<CustomerMovement4>();
+            CustomerMovement4 c4 = hit.GetComponentInParent<CustomerMovement4>();
             if (c4 != null && c4.IsWaitingForOrder())
             {
                 DeliverCoffee(c4.ReceiveCoffee, "CUSTOMER 4");
                 return;
             }
 
-            CustomerMovement5 c5 =
-                hit.GetComponentInParent<CustomerMovement5>();
+            CustomerMovement5 c5 = hit.GetComponentInParent<CustomerMovement5>();
             if (c5 != null && c5.IsWaitingForOrder())
             {
                 DeliverCoffee(c5.ReceiveCoffee, "CUSTOMER 5");
                 return;
             }
 
-            CustomerMovement6 c6 =
-                hit.GetComponentInParent<CustomerMovement6>();
+            CustomerMovement6 c6 = hit.GetComponentInParent<CustomerMovement6>();
             if (c6 != null && c6.IsWaitingForOrder())
             {
                 DeliverCoffee(c6.ReceiveCoffee, "CUSTOMER 6");
                 return;
             }
         }
-
-        Debug.LogWarning("Kopi tidak mengenai customer.");
-        // Jangan hapus gelas jika gagal mendeteksi customer.
     }
 
     void DeliverCoffee(

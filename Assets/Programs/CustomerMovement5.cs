@@ -1,7 +1,6 @@
-
 using UnityEngine;
 using System.Collections.Generic;
-using TMPro;
+using UnityEngine.UI;
 
 public class CustomerMovement5 : MonoBehaviour
 {
@@ -12,22 +11,38 @@ public class CustomerMovement5 : MonoBehaviour
     public float waitTime = 3f;
     public float maxWaitTime = 15f;
 
-    private float waitTimer;
-    private float nextSlotCheck;
-    private bool hasQueueSlot;
+    public RectTransform orderPanelRect;
+    public RectTransform orderItemsRect;
+    public float iconSize = 65f;
+    public float iconSpacing = 6f;
+    public float horizontalPadding = 10f;
+    public float verticalPadding = 10f;
+
+    private float waitTimer = 0f;
+    private float nextSlotCheck = 0f;
+
+    private bool hasQueueSlot = false;
     private Transform assignedBuyPoint;
     private Transform assignedWaitPoint;
 
     private float initialSpawnX;
-    private bool spawnFromRight;
-    private bool spawnSideDetected;
+    private bool spawnFromRight = false;
+    private bool spawnSideDetected = false;
 
     [Header("Order UI")]
-    public GameObject orderText;
+    public GameObject orderPanel;
+    public Image coffeeIcon;
+    public Image donutVanillaIcon;
+    public Image donutChocolateIcon;
+    public Image donutStrawberryIcon;
+    public Image croissantIcon;
+    public Image bakpaoIcon;
+    public Image rotiIcon;
+
     public ScoreManager scoreManager;
 
     [Header("Sprite Direction")]
-    public bool faceLeft;
+    public bool faceLeft = false;
     public bool spriteFacesRight = true;
 
     [Header("Pastry Orders")]
@@ -41,14 +56,17 @@ public class CustomerMovement5 : MonoBehaviour
         "Roti"
     };
 
-    private int state;
-    private readonly List<string> currentOrders = new();
-    private readonly List<string> receivedOrders = new();
+    private int state = 0;
+
+    private List<string> currentOrders = new List<string>();
+    private List<string> receivedOrders = new List<string>();
 
     void Update()
     {
         CustomerQueueManager queue = CustomerQueueManager.Instance;
-        if (queue == null) return;
+
+        if (queue == null)
+            return;
 
         if (!spawnSideDetected)
         {
@@ -56,6 +74,7 @@ public class CustomerMovement5 : MonoBehaviour
             spawnSideDetected = true;
         }
 
+        // STATE 0: Bergerak ke Buy Point atau menunggu slot.
         if (state == 0)
         {
             if (!hasQueueSlot)
@@ -63,8 +82,12 @@ public class CustomerMovement5 : MonoBehaviour
                 if (Time.time >= nextSlotCheck)
                 {
                     nextSlotCheck = Time.time + 0.5f;
+
                     hasQueueSlot = queue.RequestEntry(
-                        this, spawnFromRight, out assignedBuyPoint);
+                        this,
+                        spawnFromRight,
+                        out assignedBuyPoint
+                    );
 
                     if (hasQueueSlot)
                     {
@@ -76,13 +99,16 @@ public class CustomerMovement5 : MonoBehaviour
                 if (!hasQueueSlot)
                 {
                     assignedWaitPoint = queue.GetWaitPoint(this);
+
                     if (assignedWaitPoint != null)
                         MoveTo(assignedWaitPoint);
+
                     return;
                 }
             }
 
-            if (buyPoint == null) return;
+            if (buyPoint == null)
+                return;
 
             MoveTo(buyPoint);
 
@@ -90,11 +116,15 @@ public class CustomerMovement5 : MonoBehaviour
             {
                 state = 1;
                 waitTimer = 0f;
+
                 GenerateRandomOrder();
                 ShowOrder();
+
                 Debug.Log("CUSTOMER 5 SAMPAI BUY POINT!");
             }
         }
+
+        // STATE 1: Menunggu pesanan.
         else if (state == 1)
         {
             waitTimer += Time.deltaTime;
@@ -102,13 +132,19 @@ public class CustomerMovement5 : MonoBehaviour
             if (waitTimer >= maxWaitTime)
             {
                 Debug.Log("CUSTOMER 5 KEHABISAN WAKTU!");
+
                 state = 2;
-                if (orderText != null) orderText.SetActive(false);
+
+                if (orderPanel != null)
+                    orderPanel.SetActive(false);
             }
         }
+
+        // STATE 2: Keluar setelah pesanan selesai atau waktu habis.
         else if (state == 2)
         {
-            if (exitPoint == null) return;
+            if (exitPoint == null)
+                return;
 
             MoveTo(exitPoint);
 
@@ -118,8 +154,8 @@ public class CustomerMovement5 : MonoBehaviour
                 assignedBuyPoint = null;
                 assignedWaitPoint = null;
 
-                if (orderText != null)
-                    orderText.SetActive(false);
+                if (orderPanel != null)
+                    orderPanel.SetActive(false);
 
                 queue.RequeueCustomer(this, transform.position, 0f);
 
@@ -135,44 +171,100 @@ public class CustomerMovement5 : MonoBehaviour
     {
         currentOrders.Clear();
         receivedOrders.Clear();
+
         currentOrders.Add("Coffee");
 
-        if (pastryOrders == null || pastryOrders.Length == 0) return;
+        if (pastryOrders == null || pastryOrders.Length == 0)
+            return;
 
-        int amount = Random.Range(1, Mathf.Min(3, pastryOrders.Length) + 1);
-        List<string> available = new(pastryOrders);
+        int maxPastries = Mathf.Min(3, pastryOrders.Length);
+        int pastryAmount = Random.Range(1, maxPastries + 1);
 
-        for (int i = 0; i < amount && available.Count > 0; i++)
+        List<string> availablePastry = new List<string>(pastryOrders);
+
+        for (int i = 0; i < pastryAmount; i++)
         {
-            int index = Random.Range(0, available.Count);
-            currentOrders.Add(available[index]);
-            available.RemoveAt(index);
+            if (availablePastry.Count == 0)
+                break;
+
+            int randomIndex = Random.Range(0, availablePastry.Count);
+
+            currentOrders.Add(availablePastry[randomIndex]);
+            availablePastry.RemoveAt(randomIndex);
         }
     }
 
     void ShowOrder()
     {
-        if (orderText == null) return;
+        if (orderPanel == null)
+            return;
 
-        orderText.SetActive(true);
-        TMP_Text text = orderText.GetComponent<TMP_Text>();
-        if (text == null) return;
+        orderPanel.SetActive(true);
 
-        string display = "Order:\n";
+        SetIcon(coffeeIcon, false);
+        SetIcon(donutVanillaIcon, false);
+        SetIcon(donutChocolateIcon, false);
+        SetIcon(donutStrawberryIcon, false);
+        SetIcon(croissantIcon, false);
+        SetIcon(bakpaoIcon, false);
+        SetIcon(rotiIcon, false);
+
         foreach (string order in currentOrders)
-            display += "• " + order + "\n";
+        {
+            SetIcon(GetIcon(order), true);
+        }
+    }
 
-        text.text = display;
+    Image GetIcon(string itemName)
+    {
+        switch (itemName)
+        {
+            case "Coffee":
+                return coffeeIcon;
+
+            case "Donut Vanilla":
+                return donutVanillaIcon;
+
+            case "Donut Chocolate":
+                return donutChocolateIcon;
+
+            case "Donut Strawberry":
+                return donutStrawberryIcon;
+
+            case "Croissant":
+                return croissantIcon;
+
+            case "Bakpao":
+                return bakpaoIcon;
+
+            case "Roti":
+                return rotiIcon;
+
+            default:
+                return null;
+        }
+    }
+
+    void SetIcon(Image icon, bool visible)
+    {
+        if (icon != null)
+            icon.gameObject.SetActive(visible);
     }
 
     public void ReceiveCoffee()
     {
-        if (state == 1) ReceiveItem("Coffee");
+        if (state != 1)
+            return;
+
+        ReceiveItem("Coffee");
     }
 
     public void ReceivePastry(string pastryName)
     {
-        if (state == 1) ReceiveItem(pastryName);
+        if (state != 1)
+            return;
+
+        ReceiveItem(pastryName);
     }
 
     void ReceiveItem(string itemName)
@@ -190,72 +282,127 @@ public class CustomerMovement5 : MonoBehaviour
         }
 
         receivedOrders.Add(itemName);
+
         UpdateOrderDisplay();
         CheckOrderComplete();
     }
 
     void UpdateOrderDisplay()
     {
-        if (orderText == null) return;
-
-        TMP_Text text = orderText.GetComponent<TMP_Text>();
-        if (text == null) return;
-
-        string display = "Order:\n";
         foreach (string order in currentOrders)
-            display += receivedOrders.Contains(order)
-                ? "✓ " + order + "\n"
-                : "• " + order + "\n";
+        {
+            Image icon = GetIcon(order);
 
-        text.text = display;
+            if (icon != null)
+            {
+                icon.gameObject.SetActive(
+                    !receivedOrders.Contains(order)
+                );
+            }
+        }
     }
 
     void CheckOrderComplete()
     {
-        if (receivedOrders.Count < currentOrders.Count) return;
+        if (receivedOrders.Count < currentOrders.Count)
+            return;
 
         state = 2;
-        if (orderText != null) orderText.SetActive(false);
-        if (scoreManager != null) scoreManager.AddScore(100);
+
+        if (orderPanel != null)
+            orderPanel.SetActive(false);
+
+        if (scoreManager != null)
+            scoreManager.AddScore(100);
 
         Debug.Log("PESANAN CUSTOMER 5 SELESAI!");
     }
 
-    public bool IsWaitingForOrder() => state == 1;
+    public bool IsWaitingForOrder()
+    {
+        return state == 1;
+    }
 
     void MoveTo(Transform target)
     {
-        if (target == null) return;
+        if (target == null)
+            return;
 
         bool movingLeft = target.position.x < transform.position.x;
+
         bool flip = spriteFacesRight ? movingLeft : !movingLeft;
 
         transform.position = Vector3.MoveTowards(
-            transform.position, target.position, speed * Time.deltaTime);
+            transform.position,
+            target.position,
+            speed * Time.deltaTime
+        );
 
-        transform.localScale = new Vector3(flip ? -1f : 1f, 1f, 1f);
+        transform.localScale = new Vector3(
+            flip ? -1f : 1f,
+            1f,
+            1f
+        );
 
-        if (orderText != null)
-            orderText.transform.localScale =
-                new Vector3(flip ? -1f : 1f, 1f, 1f);
+        if (orderPanel != null)
+        {
+            orderPanel.transform.localScale = new Vector3(
+                flip ? -1f : 1f,
+                1f,
+                1f
+            );
+        }
     }
 
     void OnEnable()
     {
         initialSpawnX = transform.position.x;
         spawnSideDetected = false;
+
         state = 0;
         waitTimer = 0f;
         nextSlotCheck = 0f;
         hasQueueSlot = false;
+
         assignedBuyPoint = null;
         assignedWaitPoint = null;
 
         currentOrders.Clear();
         receivedOrders.Clear();
 
-        if (orderText != null) orderText.SetActive(false);
+        if (orderPanel != null)
+            orderPanel.SetActive(false);
     }
 
-    // Sengaja tidak memanggil RemoveCustomer di OnDisable.
+    void OnDisable()
+    {
+        CustomerQueueManager queue = CustomerQueueManager.Instance;
+
+        if (queue != null)
+            queue.RemoveCustomer(this);
+    }
+
+    void ResizeOrderPanel()
+    {
+        if (orderPanelRect == null || orderItemsRect == null)
+            return;
+
+        int count = 0;
+
+        foreach (string order in currentOrders)
+        {
+            Image icon = GetIcon(order);
+
+            if (icon != null && icon.gameObject.activeSelf)
+                count++;
+        }
+
+        float width = count > 0
+            ? (count * iconSize) + ((count - 1) * iconSpacing) + horizontalPadding * 2
+            : horizontalPadding * 2;
+
+        float height = iconSize + verticalPadding * 2;
+
+        orderPanelRect.sizeDelta = new Vector2(width, height);
+    }
 }

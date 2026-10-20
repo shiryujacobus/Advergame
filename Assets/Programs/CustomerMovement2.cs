@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using TMPro;
+using UnityEngine.UI;
 
 public class CustomerMovement2 : MonoBehaviour
 {
@@ -10,6 +10,13 @@ public class CustomerMovement2 : MonoBehaviour
     public float speed = 2f;
     public float waitTime = 3f;
     public float maxWaitTime = 15f;
+
+    public RectTransform orderPanelRect;
+    public RectTransform orderItemsRect;
+    public float iconSize = 65f;
+    public float iconSpacing = 6f;
+    public float horizontalPadding = 10f;
+    public float verticalPadding = 10f;
 
     private float waitTimer = 0f;
     private float nextSlotCheck = 0f;
@@ -23,7 +30,15 @@ public class CustomerMovement2 : MonoBehaviour
     private bool spawnSideDetected = false;
 
     [Header("Order UI")]
-    public GameObject orderText;
+    public GameObject orderPanel;
+    public Image coffeeIcon;
+    public Image donutVanillaIcon;
+    public Image donutChocolateIcon;
+    public Image donutStrawberryIcon;
+    public Image croissantIcon;
+    public Image bakpaoIcon;
+    public Image rotiIcon;
+
     public ScoreManager scoreManager;
 
     [Header("Sprite Direction")]
@@ -120,8 +135,8 @@ public class CustomerMovement2 : MonoBehaviour
 
                 state = 2;
 
-                if (orderText != null)
-                    orderText.SetActive(false);
+                if (orderPanel != null)
+                    orderPanel.SetActive(false);
             }
         }
 
@@ -139,8 +154,8 @@ public class CustomerMovement2 : MonoBehaviour
                 assignedBuyPoint = null;
                 assignedWaitPoint = null;
 
-                if (orderText != null)
-                    orderText.SetActive(false);
+                if (orderPanel != null)
+                    orderPanel.SetActive(false);
 
                 queue.RequeueCustomer(this, transform.position, 0f);
 
@@ -181,22 +196,59 @@ public class CustomerMovement2 : MonoBehaviour
 
     void ShowOrder()
     {
-        if (orderText == null)
+        if (orderPanel == null)
             return;
 
-        orderText.SetActive(true);
+        orderPanel.SetActive(true);
 
-        TMP_Text text = orderText.GetComponent<TMP_Text>();
-
-        if (text == null)
-            return;
-
-        string display = "Order:\n";
+        SetIcon(coffeeIcon, false);
+        SetIcon(donutVanillaIcon, false);
+        SetIcon(donutChocolateIcon, false);
+        SetIcon(donutStrawberryIcon, false);
+        SetIcon(croissantIcon, false);
+        SetIcon(bakpaoIcon, false);
+        SetIcon(rotiIcon, false);
 
         foreach (string order in currentOrders)
-            display += "• " + order + "\n";
+        {
+            SetIcon(GetIcon(order), true);
+        }
+    }
 
-        text.text = display;
+    Image GetIcon(string itemName)
+    {
+        switch (itemName)
+        {
+            case "Coffee":
+                return coffeeIcon;
+
+            case "Donut Vanilla":
+                return donutVanillaIcon;
+
+            case "Donut Chocolate":
+                return donutChocolateIcon;
+
+            case "Donut Strawberry":
+                return donutStrawberryIcon;
+
+            case "Croissant":
+                return croissantIcon;
+
+            case "Bakpao":
+                return bakpaoIcon;
+
+            case "Roti":
+                return rotiIcon;
+
+            default:
+                return null;
+        }
+    }
+
+    void SetIcon(Image icon, bool visible)
+    {
+        if (icon != null)
+            icon.gameObject.SetActive(visible);
     }
 
     public void ReceiveCoffee()
@@ -237,24 +289,17 @@ public class CustomerMovement2 : MonoBehaviour
 
     void UpdateOrderDisplay()
     {
-        if (orderText == null)
-            return;
-
-        TMP_Text text = orderText.GetComponent<TMP_Text>();
-
-        if (text == null)
-            return;
-
-        string display = "Order:\n";
-
         foreach (string order in currentOrders)
         {
-            display += receivedOrders.Contains(order)
-                ? "✓ " + order + "\n"
-                : "• " + order + "\n";
-        }
+            Image icon = GetIcon(order);
 
-        text.text = display;
+            if (icon != null)
+            {
+                icon.gameObject.SetActive(
+                    !receivedOrders.Contains(order)
+                );
+            }
+        }
     }
 
     void CheckOrderComplete()
@@ -264,8 +309,8 @@ public class CustomerMovement2 : MonoBehaviour
 
         state = 2;
 
-        if (orderText != null)
-            orderText.SetActive(false);
+        if (orderPanel != null)
+            orderPanel.SetActive(false);
 
         if (scoreManager != null)
             scoreManager.AddScore(100);
@@ -299,9 +344,9 @@ public class CustomerMovement2 : MonoBehaviour
             1f
         );
 
-        if (orderText != null)
+        if (orderPanel != null)
         {
-            orderText.transform.localScale = new Vector3(
+            orderPanel.transform.localScale = new Vector3(
                 flip ? -1f : 1f,
                 1f,
                 1f
@@ -325,8 +370,8 @@ public class CustomerMovement2 : MonoBehaviour
         currentOrders.Clear();
         receivedOrders.Clear();
 
-        if (orderText != null)
-            orderText.SetActive(false);
+        if (orderPanel != null)
+            orderPanel.SetActive(false);
     }
 
     void OnDisable()
@@ -335,5 +380,29 @@ public class CustomerMovement2 : MonoBehaviour
 
         if (queue != null)
             queue.RemoveCustomer(this);
+    }
+
+    void ResizeOrderPanel()
+    {
+        if (orderPanelRect == null || orderItemsRect == null)
+            return;
+
+        int count = 0;
+
+        foreach (string order in currentOrders)
+        {
+            Image icon = GetIcon(order);
+
+            if (icon != null && icon.gameObject.activeSelf)
+                count++;
+        }
+
+        float width = count > 0
+            ? (count * iconSize) + ((count - 1) * iconSpacing) + horizontalPadding * 2
+            : horizontalPadding * 2;
+
+        float height = iconSize + verticalPadding * 2;
+
+        orderPanelRect.sizeDelta = new Vector2(width, height);
     }
 }
