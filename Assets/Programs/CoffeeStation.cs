@@ -12,7 +12,7 @@ public class CoffeeStation : MonoBehaviour
     public GameObject coffeeStatusText;
 
     [Header("Coffee Mug")]
-    public CoffeeItem coffeeMug;
+    public CoffeeItem[] coffeeMugs;
 
     [Header("Brewing Sound")]
     public AudioSource brewingAudio;
@@ -24,49 +24,43 @@ public class CoffeeStation : MonoBehaviour
         ResolveCoffeeMug();
     }
 
+
     void ResolveCoffeeMug()
     {
-        // Cari mug berdasarkan nama pasangan mesin.
-        string stationName = gameObject.name;
+        string suffix = "";
 
-        if (stationName.StartsWith("CoffeeMachine"))
+        if (gameObject.name == "CoffeeMachineLeft")
+            suffix = "Left";
+        else if (gameObject.name == "CoffeeMachineMid")
+            suffix = "Mid";
+        else if (gameObject.name == "CoffeeMachineRight")
+            suffix = "Right";
+
+        if (suffix == "")
         {
-            string suffix =
-                stationName.Substring("CoffeeMachine".Length);
+            Debug.LogError("Nama mesin kopi tidak cocok: " + gameObject.name);
+            return;
+        }
 
-            string expectedMugName = "Mug" + suffix;
+        CoffeeItem[] mugs =
+            FindObjectsByType<CoffeeItem>(
+                FindObjectsSortMode.None
+            );
 
-            CoffeeItem[] mugs =
-                FindObjectsByType<CoffeeItem>(
-                    FindObjectsSortMode.None
-                );
-
-            foreach (CoffeeItem mug in mugs)
+        foreach (CoffeeItem mug in mugs)
+        {
+            if (mug != null && mug.gameObject.name == "Mug" + suffix)
             {
-                if (mug != null &&
-                    mug.gameObject.name == expectedMugName)
-                {
-                    coffeeMug = mug;
-                    break;
-                }
+                coffeeMugs = new CoffeeItem[] { mug };
+                Debug.Log(gameObject.name + " terhubung ke " + mug.name);
+                return;
             }
         }
 
-        if (coffeeMug == null)
-        {
-            Debug.LogError(
-                gameObject.name +
-                ": Mug tidak ditemukan! Periksa nama MugLeft, MugMid, atau MugRight."
-            );
-        }
-        else
-        {
-            Debug.Log(
-                gameObject.name +
-                " terhubung ke " + coffeeMug.gameObject.name
-            );
-        }
+        Debug.LogError("Mug" + suffix + " tidak ditemukan!");
     }
+
+
 
     void Update()
     {
@@ -74,6 +68,8 @@ public class CoffeeStation : MonoBehaviour
             return;
 
         brewTimer += Time.deltaTime;
+
+        Debug.Log(gameObject.name + " Timer: " + brewTimer);
 
         if (brewTimer >= brewTime)
         {
@@ -84,18 +80,17 @@ public class CoffeeStation : MonoBehaviour
             if (brewingAudio != null)
                 brewingAudio.Stop();
 
-            if (coffeeMug != null)
-                coffeeMug.SetCoffeeReady();
+            if (coffeeMugs != null)
+            {
+                foreach (CoffeeItem mug in coffeeMugs)
+                {
+                    if (mug != null)
+                        mug.SetCoffeeReady();
+                }
+            }
 
             ShowStatus("Coffee Ready!");
-
-            Debug.Log(
-                gameObject.name +
-                " SELESAI BREWING | Mug: " +
-                (coffeeMug != null
-                    ? coffeeMug.gameObject.name
-                    : "NULL")
-            );
+            Debug.Log(gameObject.name + " SELESAI BREWING!");
         }
     }
 
@@ -103,25 +98,28 @@ public class CoffeeStation : MonoBehaviour
     {
         ResolveCoffeeMug();
 
-        Debug.Log(
-            gameObject.name +
-            " DIKLIK | Brewing: " + isBrewing +
-            " | Ready: " + coffeeReady +
-            " | Mug: " +
-            (coffeeMug != null
-                ? coffeeMug.gameObject.name
-                : "NULL")
-        );
+        Debug.Log(gameObject.name + " tombol kopi ditekan!");
 
         if (isBrewing || coffeeReady)
+        {
+            Debug.Log("Kopi sedang dibuat atau sudah siap!");
             return;
+        }
 
         isBrewing = true;
         coffeeReady = false;
         brewTimer = 0f;
 
-        if (coffeeMug != null)
-            coffeeMug.SetCoffeeEmpty();
+        if (coffeeMugs != null)
+        {
+            foreach (CoffeeItem mug in coffeeMugs)
+            {
+                if (mug != null)
+                {
+                    mug.SetCoffeeEmpty();
+                }
+            }
+        }
 
         if (brewingAudio != null)
         {
@@ -130,8 +128,9 @@ public class CoffeeStation : MonoBehaviour
         }
 
         ShowStatus("Making Coffee...");
-    }
 
+        Debug.Log(gameObject.name + " mulai membuat kopi!");
+    }
     public bool TakeCoffee()
     {
         if (!coffeeReady)
@@ -144,8 +143,14 @@ public class CoffeeStation : MonoBehaviour
         if (brewingAudio != null)
             brewingAudio.Stop();
 
-        if (coffeeMug != null)
-            coffeeMug.SetCoffeeEmpty();
+        if (coffeeMugs != null)
+        {
+            foreach (CoffeeItem mug in coffeeMugs)
+            {
+                if (mug != null)
+                    mug.SetCoffeeEmpty();
+            }
+        }
 
         HideStatus();
 
@@ -153,6 +158,7 @@ public class CoffeeStation : MonoBehaviour
 
         return true;
     }
+
 
     void ShowStatus(string message)
     {

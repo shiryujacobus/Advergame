@@ -1,0 +1,873 @@
+fileFormatVersion: 2
+guid: 8d4c4b38f3b354642964cfbdc4f9ecc9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4800575877029595470
+    second: Cangkir Isi_0
+  - first:
+      213: 1086899044152753023
+    second: Cangkir Isi_1
+  - first:
+      213: 4191511280312898679
+    second: Cangkir Isi_2
+  - first:
+      213: 7520387975303512572
+    second: Cangkir Isi_3
+  - first:
+      213: 4466745784728922446
+    second: Cangkir Isi_4
+  - first:
+      213: 3390044081433450923
+    second: Cangkir Isi_5
+  - first:
+      213: 8960189652732780962
+    second: Cangkir Isi_6
+  - first:
+      213: 424233976004855279
+    second: Cangkir Isi_7
+  - first:
+      213: -9097626872507441648
+    second: Cangkir Isi_8
+  - first:
+      213: 5938018204140179873
+    second: Cangkir Isi_9
+  - first:
+      213: -1402424917444247870
+    second: Cangkir Isi_10
+  - first:
+      213: -8196232912685393907
+    second: Cangkir Isi_11
+  - first:
+      213: -4813703700588370327
+    second: Cangkir Isi_12
+  - first:
+      213: -7809461280743810184
+    second: Cangkir Isi_13
+  - first:
+      213: 6952647858815101448
+    second: Cangkir Isi_14
+  - first:
+      213: -2072330213542892246
+    second: Cangkir Isi_15
+  - first:
+      213: 5171284611092521957
+    second: Cangkir Isi_16
+  - first:
+      213: 7858835448753043760
+    second: Cangkir Isi_17
+  - first:
+      213: -2878242328422801770
+    second: Cangkir Isi_18
+  - first:
+      213: -3843591303967761628
+    second: Cangkir Isi_19
+  - first:
+      213: 2399567261789898828
+    second: Cangkir Isi_20
+  - first:
+      213: -6747808464762462085
+    second: Cangkir Isi_21
+  - first:
+      213: -3171809468693418723
+    second: Cangkir Isi_22
+  - first:
+      213: -1406956708154308168
+    second: Cangkir Isi_23
+  - first:
+      213: 5330968248912740158
+    second: Cangkir Isi_24
+  - first:
+      213: 4911166142643276721
+    second: Cangkir Isi_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: VisionOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Cangkir Isi_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 613
+        height: 481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b67754acade06db0800000000000000
+      internalID: -4800575877029595470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_1
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 473
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7bbf690ce0751f00800000000000000
+      internalID: 1086899044152753023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_2
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 476
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 774d7174d4d3b2a30800000000000000
+      internalID: 4191511280312898679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_3
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 470
+        width: 34
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf1c511d409cd5860800000000000000
+      internalID: 7520387975303512572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_4
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 469
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e49adb810a11dfd30800000000000000
+      internalID: 4466745784728922446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_5
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 470
+        width: 18
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba991ce712bdb0f20800000000000000
+      internalID: 3390044081433450923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_6
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 472
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a1a44b140df85c70800000000000000
+      internalID: 8960189652732780962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_7
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 470
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe5cb61bd8e23e500800000000000000
+      internalID: 424233976004855279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_8
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 471
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01e552d8f8cbeb180800000000000000
+      internalID: -9097626872507441648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_9
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 476
+        width: 9
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a1149f7814186250800000000000000
+      internalID: 5938018204140179873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_10
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 474
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ce349bc7f5998ce0800000000000000
+      internalID: -1402424917444247870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_11
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 473
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0895076791214e80800000000000000
+      internalID: -8196232912685393907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_12
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 473
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96662780df9423db0800000000000000
+      internalID: -4813703700588370327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_13
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 472
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87b191a67583f9390800000000000000
+      internalID: -7809461280743810184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_14
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 473
+        width: 20
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80aed011464cc7060800000000000000
+      internalID: 6952647858815101448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_15
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 474
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2d677486aa9d33e0800000000000000
+      internalID: -2072330213542892246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_16
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 473
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e32d9484f714c740800000000000000
+      internalID: 5171284611092521957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_17
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 465
+        width: 33
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0393c27e331301d60800000000000000
+      internalID: 7858835448753043760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_18
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 473
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69e9dd41add6e08d0800000000000000
+      internalID: -2878242328422801770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_19
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 471
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42b9831c212d8aac0800000000000000
+      internalID: -3843591303967761628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_20
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 459
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c48c4ad06b9fc4120800000000000000
+      internalID: 2399567261789898828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_21
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 472
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b70a575e3f7fa52a0800000000000000
+      internalID: -6747808464762462085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_22
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 473
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1dee4bd7187bf3d0800000000000000
+      internalID: -3171809468693418723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_23
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 476
+        width: 9
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b90c1c045c797ce0800000000000000
+      internalID: -1406956708154308168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_24
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 476
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3f7451b0676bf940800000000000000
+      internalID: 5330968248912740158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cangkir Isi_25
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 0
+        width: 81
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bb8d251697f72440800000000000000
+      internalID: 4911166142643276721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Cangkir Isi_0: -4800575877029595470
+      Cangkir Isi_1: 1086899044152753023
+      Cangkir Isi_10: -1402424917444247870
+      Cangkir Isi_11: -8196232912685393907
+      Cangkir Isi_12: -4813703700588370327
+      Cangkir Isi_13: -7809461280743810184
+      Cangkir Isi_14: 6952647858815101448
+      Cangkir Isi_15: -2072330213542892246
+      Cangkir Isi_16: 5171284611092521957
+      Cangkir Isi_17: 7858835448753043760
+      Cangkir Isi_18: -2878242328422801770
+      Cangkir Isi_19: -3843591303967761628
+      Cangkir Isi_2: 4191511280312898679
+      Cangkir Isi_20: 2399567261789898828
+      Cangkir Isi_21: -6747808464762462085
+      Cangkir Isi_22: -3171809468693418723
+      Cangkir Isi_23: -1406956708154308168
+      Cangkir Isi_24: 5330968248912740158
+      Cangkir Isi_25: 4911166142643276721
+      Cangkir Isi_3: 7520387975303512572
+      Cangkir Isi_4: 4466745784728922446
+      Cangkir Isi_5: 3390044081433450923
+      Cangkir Isi_6: 8960189652732780962
+      Cangkir Isi_7: 424233976004855279
+      Cangkir Isi_8: -9097626872507441648
+      Cangkir Isi_9: 5938018204140179873
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

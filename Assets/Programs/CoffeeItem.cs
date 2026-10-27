@@ -1,47 +1,60 @@
+
 using UnityEngine;
 
 public class CoffeeItem : MonoBehaviour
 {
+    [Header("Status Kopi")]
     public bool coffeeReady = false;
 
-    [Header("Mug Visual")]
+    [Header("Visual Mug")]
     public Sprite emptyMugSprite;
     public Sprite coffeeMugSprite;
 
     private SpriteRenderer spriteRenderer;
 
-    void Awake()
+    private void Awake()
     {
-        spriteRenderer =
-            GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
+        // Awal game, mug dalam keadaan kosong.
         SetCoffeeEmpty();
     }
 
+    // Dipanggil oleh mesin atau tombol saat kopi selesai dibuat.
     public void SetCoffeeReady()
     {
         coffeeReady = true;
 
-        if (spriteRenderer != null &&
-            coffeeMugSprite != null)
-        {
+        if (spriteRenderer != null && coffeeMugSprite != null)
             spriteRenderer.sprite = coffeeMugSprite;
-        }
 
-        Debug.Log("MUG SEKARANG BERISI COFFEE!");
+        Debug.Log(name + ": Kopi siap diambil!");
     }
 
+    // Mug kembali kosong setelah kopi berhasil diambil.
     public void SetCoffeeEmpty()
     {
         coffeeReady = false;
-        Debug.Log("MUG SEKARANG KOSONG!");
+
+        if (spriteRenderer != null && emptyMugSprite != null)
+            spriteRenderer.sprite = emptyMugSprite;
+
+        Debug.Log(name + ": Mug kosong, siap di-refill.");
     }
 
-    void OnMouseDown()
+
+    private void OnMouseDown()
     {
-        Debug.Log(
-            "!!! COFFEE ITEM DIKLIK !!! READY: "
-            + coffeeReady
-        );
+        if (!coffeeReady)
+        {
+            Debug.Log("Kopi belum siap!");
+            return;
+        }
+
+        GameManager manager = FindFirstObjectByType<GameManager>();
+
+        if (manager != null)
+            manager.TryTakeCoffee(this);
     }
+
 }

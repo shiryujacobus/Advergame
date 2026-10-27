@@ -2,7 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class CustomerMovement6 : MonoBehaviour
+
+public class CustomerMovement5 : MonoBehaviour, ICustomerOrder
+
 {
     [Header("Movement")]
     public Transform buyPoint;
@@ -44,6 +46,73 @@ public class CustomerMovement6 : MonoBehaviour
     [Header("Sprite Direction")]
     public bool faceLeft = false;
     public bool spriteFacesRight = true;
+
+    private bool bagDelivered = false;
+    // Customer dipilih dengan klik.
+
+    private void OnMouseDown()
+    {
+        if (state != 1)
+            return;
+
+        if (FoodBagSystem.Instance != null)
+            FoodBagSystem.Instance.SelectCustomer(this);
+    }
+
+
+    // Dipanggil saat makanan diklik di etalase.
+    public bool AddItemToBag(string itemName)
+    {
+        if (state != 1)
+            return false;
+
+        if (!currentOrders.Contains(itemName))
+        {
+            Debug.Log("Customer tidak memesan: " + itemName);
+            return false;
+        }
+
+        if (receivedOrders.Contains(itemName))
+        {
+            Debug.Log("Item sudah dimasukkan: " + itemName);
+            return false;
+        }
+
+        receivedOrders.Add(itemName);
+
+        // Hilangkan ikon item yang sudah dimasukkan.
+        UpdateOrderDisplay();
+
+        Debug.Log("Item masuk kantong: " + itemName);
+
+        return true;
+    }
+
+    // Dipanggil saat pemain menyerahkan kantong.
+    public bool DeliverBag()
+    {
+        if (state != 1)
+            return false;
+
+        if (receivedOrders.Count != currentOrders.Count)
+        {
+            Debug.Log("Pesanan belum lengkap!");
+            return false;
+        }
+
+        bagDelivered = true;
+        state = 2;
+
+        if (orderPanel != null)
+            orderPanel.SetActive(false);
+
+        if (scoreManager != null)
+            scoreManager.AddScore(100);
+
+        Debug.Log("PESANAN SELESAI! CUSTOMER PERGI.");
+
+        return true;
+    }
 
     [Header("Pastry Orders")]
     public string[] pastryOrders =
@@ -120,7 +189,7 @@ public class CustomerMovement6 : MonoBehaviour
                 GenerateRandomOrder();
                 ShowOrder();
 
-                Debug.Log("CUSTOMER 6 SAMPAI BUY POINT!");
+                Debug.Log("CUSTOMER 2 SAMPAI BUY POINT!");
             }
         }
 
@@ -131,7 +200,7 @@ public class CustomerMovement6 : MonoBehaviour
 
             if (waitTimer >= maxWaitTime)
             {
-                Debug.Log("CUSTOMER 6 KEHABISAN WAKTU!");
+                Debug.Log("CUSTOMER 2 KEHABISAN WAKTU!");
 
                 state = 2;
 
@@ -271,13 +340,13 @@ public class CustomerMovement6 : MonoBehaviour
     {
         if (!currentOrders.Contains(itemName))
         {
-            Debug.Log("CUSTOMER 6 TIDAK MEMESAN: " + itemName);
+            Debug.Log("CUSTOMER 2 TIDAK MEMESAN: " + itemName);
             return;
         }
 
         if (receivedOrders.Contains(itemName))
         {
-            Debug.Log("CUSTOMER 6 SUDAH MENERIMA: " + itemName);
+            Debug.Log("CUSTOMER 2 SUDAH MENERIMA: " + itemName);
             return;
         }
 
@@ -315,7 +384,7 @@ public class CustomerMovement6 : MonoBehaviour
         if (scoreManager != null)
             scoreManager.AddScore(100);
 
-        Debug.Log("PESANAN CUSTOMER 6 SELESAI!");
+        Debug.Log("PESANAN CUSTOMER 2 SELESAI!");
     }
 
     public bool IsWaitingForOrder()
@@ -372,6 +441,8 @@ public class CustomerMovement6 : MonoBehaviour
 
         if (orderPanel != null)
             orderPanel.SetActive(false);
+
+        bagDelivered = false;
     }
 
     void OnDisable()

@@ -1,70 +1,57 @@
+
 using UnityEngine;
 
 public class DraggablePastry : MonoBehaviour
 {
-    private GameObject heldPastry;
-    private string pastryName;
+    private Vector3 originalPosition;
+    private bool isDragging;
 
-    void OnMouseDown()
+    private Camera mainCamera;
+    private Collider2D bagCollider;
+
+    private void Awake()
     {
-        PastryItems pastry = GetComponent<PastryItems>();
-
-        if (pastry == null)
-            pastry = GetComponentInChildren<PastryItems>();
-
-        if (pastry == null)
-            pastry = GetComponentInParent<PastryItems>();
-
-        if (pastry == null)
-        {
-            Debug.LogError(
-                "PastryItems TIDAK DITEMUKAN: " + gameObject.name
-            );
-            return;
-        }
-
-        pastryName = pastry.pastryName;
-
-        Debug.Log("PASTRY DIAMBIL: " + pastryName);
-
-        heldPastry = Instantiate(
-            gameObject,
-            transform.position,
-            transform.rotation
-        );
-
-        DraggablePastry heldScript =
-            heldPastry.GetComponent<DraggablePastry>();
-
-        if (heldScript != null)
-            Destroy(heldScript);
+        mainCamera = Camera.main;
+        bagCollider = GetComponent<Collider2D>();
     }
 
-    void Update()
+    private void OnMouseDown()
     {
-        if (heldPastry == null)
+        if (mainCamera == null)
+            mainCamera = Camera.main;
+
+        if (mainCamera == null)
             return;
 
-        if (Camera.main == null)
+        originalPosition = transform.position;
+        isDragging = true;
+
+        Debug.Log("BUNGKUS MULAI DI-DRAG");
+    }
+
+    private void Update()
+    {
+        if (!isDragging || mainCamera == null)
             return;
 
         Vector3 mousePosition =
-            Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
-        mousePosition.z = heldPastry.transform.position.z;
-        heldPastry.transform.position = mousePosition;
+        mousePosition.z = transform.position.z;
+        transform.position = mousePosition;
 
         if (Input.GetMouseButtonUp(0))
-            DropPastry();
+        {
+            isDragging = false;
+            DropBag();
+        }
     }
 
-    void DropPastry()
+    private void DropBag()
     {
-        Debug.Log("MENCOBA MEMBERIKAN: " + pastryName);
-
         Collider2D[] hits = Physics2D.OverlapCircleAll(
-            heldPastry.transform.position,
-            0.5f
+            transform.position,
+            0.7f
         );
 
         foreach (Collider2D hit in hits)
@@ -74,7 +61,7 @@ public class DraggablePastry : MonoBehaviour
 
             if (c1 != null && c1.IsWaitingForOrder())
             {
-                DeliverPastry(c1.ReceivePastry, "CUSTOMER 1");
+                DeliverToCustomer(c1, "CUSTOMER 1");
                 return;
             }
 
@@ -83,7 +70,7 @@ public class DraggablePastry : MonoBehaviour
 
             if (c2 != null && c2.IsWaitingForOrder())
             {
-                DeliverPastry(c2.ReceivePastry, "CUSTOMER 2");
+                DeliverToCustomer(c2, "CUSTOMER 2");
                 return;
             }
 
@@ -92,7 +79,7 @@ public class DraggablePastry : MonoBehaviour
 
             if (c3 != null && c3.IsWaitingForOrder())
             {
-                DeliverPastry(c3.ReceivePastry, "CUSTOMER 3");
+                DeliverToCustomer(c3, "CUSTOMER 3");
                 return;
             }
 
@@ -101,7 +88,7 @@ public class DraggablePastry : MonoBehaviour
 
             if (c4 != null && c4.IsWaitingForOrder())
             {
-                DeliverPastry(c4.ReceivePastry, "CUSTOMER 4");
+                DeliverToCustomer(c4, "CUSTOMER 4");
                 return;
             }
 
@@ -110,7 +97,7 @@ public class DraggablePastry : MonoBehaviour
 
             if (c5 != null && c5.IsWaitingForOrder())
             {
-                DeliverPastry(c5.ReceivePastry, "CUSTOMER 5");
+                DeliverToCustomer(c5, "CUSTOMER 5");
                 return;
             }
 
@@ -119,25 +106,43 @@ public class DraggablePastry : MonoBehaviour
 
             if (c6 != null && c6.IsWaitingForOrder())
             {
-                DeliverPastry(c6.ReceivePastry, "CUSTOMER 6");
+                DeliverToCustomer(c6, "CUSTOMER 6");
                 return;
             }
         }
 
-        Debug.Log("PASTRY TIDAK DIBERIKAN KE CUSTOMER.");
-        Destroy(heldPastry);
+        Debug.Log("BUNGKUS TIDAK MENGENAI CUSTOMER.");
+        transform.position = originalPosition;
     }
 
-    void DeliverPastry(
-        System.Action<string> receivePastry,
+    private void DeliverToCustomer(
+        MonoBehaviour customerComponent,
         string customerName)
     {
-        receivePastry.Invoke(pastryName);
+        if (FoodBagSystem.Instance == null)
+        {
+            Debug.LogError("FoodBagSystem tidak ditemukan!");
+            transform.position = originalPosition;
+            return;
+        }
 
-        Debug.Log(
-            pastryName + " DISERAHKAN KE " + customerName + "!"
-        );
+        ICustomerOrder customer =
+            customerComponent as ICustomerOrder;
 
-        Destroy(heldPastry);
+        if (customer == null)
+        {
+            Debug.LogError(
+                customerName + " belum mengimplementasikan ICustomerOrder."
+            );
+
+            transform.position = originalPosition;
+            return;
+        }
+
+        FoodBagSystem.Instance.TryDeliverBagToCustomer(customer);
+
+        Debug.Log("BUNGKUS DIARAHKAN KE " + customerName);
+
+        transform.position = originalPosition;
     }
 }
