@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +17,7 @@ public class LeaderboardManager : MonoBehaviour
     public Transform leaderboardContent;
     public GameObject leaderboardRowPrefab;
     public Sprite defaultAvatar;
-    public int maxEntries = 10;
+    public int maxEntries = 5;
 
     private const string LeaderboardKey = "CafeLeaderboard";
 
@@ -48,8 +47,8 @@ public class LeaderboardManager : MonoBehaviour
 
         data.entries.Sort((a, b) => b.score.CompareTo(a.score));
 
-        if (data.entries.Count > 10)
-            data.entries.RemoveRange(10, data.entries.Count - 10);
+        if (data.entries.Count > 5)
+            data.entries.RemoveRange(5, data.entries.Count - 5);
 
         PlayerPrefs.SetString(
             LeaderboardKey,

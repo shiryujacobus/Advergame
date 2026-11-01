@@ -1,48 +1,69 @@
-
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AudioSettingsManager : MonoBehaviour
 {
+    [Header("Audio Sources")]
     public AudioSource bgmAudioSource;
-    public Slider bgmVolumeSlider;
+    public AudioSource[] soundAudioSources;
+
+    [Header("Button Images")]
+    public Image soundButtonImage;
+    public Image musicButtonImage;
+
+    [Header("Sound Icons")]
+    public Sprite soundOnIcon;
+    public Sprite soundOffIcon;
+
+    [Header("Music Icons")]
+    public Sprite musicOnIcon;
+    public Sprite musicOffIcon;
+
+    private bool soundOn = true;
+    private bool musicOn = true;
 
     void Start()
     {
-        if (bgmAudioSource == null ||
-            bgmVolumeSlider == null)
-        {
-            Debug.LogWarning(
-                "AudioSource atau Slider belum dihubungkan!"
-            );
-            return;
-        }
-
-        bgmVolumeSlider.minValue = 0f;
-        bgmVolumeSlider.maxValue = 1f;
-
-        bgmVolumeSlider.value = bgmAudioSource.volume;
-
-        bgmVolumeSlider.onValueChanged.AddListener(
-            ChangeBGMVolume
-        );
+        UpdateSound();
+        UpdateMusic();
     }
 
-    public void ChangeBGMVolume(float volume)
+    public void ToggleSound()
+    {
+        soundOn = !soundOn;
+        UpdateSound();
+    }
+
+    public void ToggleMusic()
+    {
+        musicOn = !musicOn;
+        UpdateMusic();
+    }
+
+    void UpdateSound()
+    {
+        foreach (AudioSource source in soundAudioSources)
+        {
+            if (source != null)
+                source.mute = !soundOn;
+        }
+
+        if (soundButtonImage != null)
+        {
+            soundButtonImage.sprite =
+                soundOn ? soundOnIcon : soundOffIcon;
+        }
+    }
+
+    void UpdateMusic()
     {
         if (bgmAudioSource != null)
-        {
-            bgmAudioSource.volume = volume;
-        }
-    }
+            bgmAudioSource.mute = !musicOn;
 
-    void OnDestroy()
-    {
-        if (bgmVolumeSlider != null)
+        if (musicButtonImage != null)
         {
-            bgmVolumeSlider.onValueChanged.RemoveListener(
-                ChangeBGMVolume
-            );
+            musicButtonImage.sprite =
+                musicOn ? musicOnIcon : musicOffIcon;
         }
     }
 }

@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -42,10 +41,21 @@ public class FoodBagSystem : MonoBehaviour
 
     public void SelectCustomer(ICustomerOrder customer)
     {
-
         Debug.Log("CUSTOMER DIPILIH: " + customer);
-        if (customer == null || !customer.IsWaitingForOrder())
+
+        if (customer == null)
             return;
+
+        // Customer belum di-accept
+        if (customer.CanAcceptOrder())
+        {
+            customer.AcceptOrder();
+        }
+        // Customer sudah di-accept dan masih menunggu
+        else if (!customer.IsWaitingForOrder())
+        {
+            return;
+        }
 
         selectedCustomer = customer;
         bagItems.Clear();

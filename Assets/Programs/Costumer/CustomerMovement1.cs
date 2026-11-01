@@ -19,9 +19,6 @@ public class CustomerMovement1 : MonoBehaviour, ICustomerOrder
     public float horizontalPadding = 10f;
     public float verticalPadding = 10f;
 
-    private float waitTimer;
-    private float nextSlotCheck;
-
     private bool hasQueueSlot;
     private Transform assignedBuyPoint;
     private Transform assignedWaitPoint;
@@ -29,6 +26,16 @@ public class CustomerMovement1 : MonoBehaviour, ICustomerOrder
     private float initialSpawnX;
     private bool spawnFromRight;
     private bool spawnSideDetected;
+
+    [Header("Customer Timer")]
+    public float acceptTimeLimit = 7f;
+    public Image patienceBar;
+
+    private float acceptTimer;
+    private float patienceTimer;
+    private bool orderAccepted;
+
+    private float nextSlotCheck;
 
     [Header("Order UI")]
     public GameObject orderPanel;
@@ -72,6 +79,29 @@ public class CustomerMovement1 : MonoBehaviour, ICustomerOrder
 
     private bool bagDelivered;
 
+    public bool CanAcceptOrder()
+    {
+        return state == 1 && !orderAccepted && !bagDelivered;
+    }
+
+    public void AcceptOrder()
+    {
+        if (!CanAcceptOrder())
+            return;
+
+        orderAccepted = true;
+        patienceTimer = maxWaitTime;
+
+        if (patienceBar != null)
+        {
+            patienceBar.gameObject.SetActive(true);
+            patienceBar.fillAmount = 1f;
+            patienceBar.color = Color.green;
+        }
+
+        Debug.Log("ORDER CUSTOMER 1 DI-ACCEPT!");
+    }
+
     private void OnEnable()
     {
         initialSpawnX = transform.position.x;
@@ -79,7 +109,15 @@ public class CustomerMovement1 : MonoBehaviour, ICustomerOrder
         spawnFromRight = false;
 
         state = 0;
-        waitTimer = 0f;
+        acceptTimer = 0f;
+        patienceTimer = maxWaitTime;
+        orderAccepted = false;
+
+        if (patienceBar != null)
+        {
+            patienceBar.fillAmount = 1f;
+            patienceBar.gameObject.SetActive(false);
+        }
         nextSlotCheck = 0f;
 
         hasQueueSlot = false;
@@ -169,7 +207,9 @@ public class CustomerMovement1 : MonoBehaviour, ICustomerOrder
             ) < 0.05f)
             {
                 state = 1;
-                waitTimer = 0f;
+                acceptTimer = 0f;
+                patienceTimer = maxWaitTime;
+                orderAccepted = false;
 
                 GenerateRandomOrder();
                 ShowOrder();
@@ -178,19 +218,57 @@ public class CustomerMovement1 : MonoBehaviour, ICustomerOrder
             }
         }
 
-        // STATE 1: menunggu pesanan.
+        // STATE 1: menunggu accept atau pelayanan.
         else if (state == 1)
         {
-            waitTimer += Time.deltaTime;
-
-            if (waitTimer >= maxWaitTime)
+            // Belum di-accept: hitung mundur 7 detik.
+            if (!orderAccepted)
             {
-                Debug.Log("CUSTOMER KEHABISAN WAKTU!");
+                acceptTimer += Time.deltaTime;
 
-                state = 2;
+                if (acceptTimer >= acceptTimeLimit)
+                {
+                    Debug.Log("CUSTOMER 1 TIDAK DI-ACCEPT!");
 
-                if (orderPanel != null)
-                    orderPanel.SetActive(false);
+                    state = 2;
+
+                    if (orderPanel != null)
+                        orderPanel.SetActive(false);
+                }
+            }
+            // Sudah di-accept: jalankan patience timer.
+            else
+            {
+                patienceTimer -= Time.deltaTime;
+
+                float progress = Mathf.Clamp01(
+                    patienceTimer / maxWaitTime
+                );
+
+                if (patienceBar != null)
+                {
+                    patienceBar.fillAmount = progress;
+
+                    if (progress > 0.5f)
+                        patienceBar.color = Color.green;
+                    else if (progress > 0.2f)
+                        patienceBar.color = Color.yellow;
+                    else
+                        patienceBar.color = Color.red;
+                }
+
+                if (patienceTimer <= 0f)
+                {
+                    Debug.Log("CUSTOMER 1 KEHABISAN KESABARAN!");
+
+                    state = 2;
+
+                    if (orderPanel != null)
+                        orderPanel.SetActive(false);
+
+                    if (patienceBar != null)
+                        patienceBar.gameObject.SetActive(false);
+                }
             }
         }
 
@@ -217,7 +295,9 @@ public class CustomerMovement1 : MonoBehaviour, ICustomerOrder
                 queue.RequeueCustomer(this, transform.position, 0f);
 
                 state = 0;
-                waitTimer = 0f;
+                acceptTimer = 0f;
+                patienceTimer = maxWaitTime;
+                orderAccepted = false;
                 nextSlotCheck = Time.time + queue.spawnDelay;
             }
         }
@@ -353,6 +433,9 @@ public class CustomerMovement1 : MonoBehaviour, ICustomerOrder
         bagDelivered = true;
         state = 2;
 
+        if (patienceBar != null)
+            patienceBar.gameObject.SetActive(false);
+
         if (orderPanel != null)
             orderPanel.SetActive(false);
 
@@ -391,7 +474,7 @@ public class CustomerMovement1 : MonoBehaviour, ICustomerOrder
 
     public bool IsWaitingForOrder()
     {
-        return state == 1 && !bagDelivered;
+        return state == 1 && orderAccepted && !bagDelivered;
     }
 
     private void MoveTo(Transform target)
