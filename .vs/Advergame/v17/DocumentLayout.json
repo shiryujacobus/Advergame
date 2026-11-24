@@ -3,7 +3,19 @@
   "WorkspaceRootPath": "C:\\Pemrograman Game\\Advergame\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BB96008E-9078-48E5-F436-D8AF946FA70E}|Assembly-CSharp.csproj|c:\\pemrograman game\\advergame\\assets\\programs\\leaderboardreset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BB96008E-9078-48E5-F436-D8AF946FA70E}|Assembly-CSharp.csproj|c:\\pemrograman game\\advergame\\assets\\programs\\yosua\\cofeetransisi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB96008E-9078-48E5-F436-D8AF946FA70E}|Assembly-CSharp.csproj|solutionrelative:assets\\programs\\yosua\\cofeetransisi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB96008E-9078-48E5-F436-D8AF946FA70E}|Assembly-CSharp.csproj|c:\\pemrograman game\\advergame\\assets\\programs\\yosua\\foodbagsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB96008E-9078-48E5-F436-D8AF946FA70E}|Assembly-CSharp.csproj|solutionrelative:assets\\programs\\yosua\\foodbagsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB96008E-9078-48E5-F436-D8AF946FA70E}|Assembly-CSharp.csproj|C:\\Pemrograman Game\\Advergame\\assets\\programs\\scoremanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB96008E-9078-48E5-F436-D8AF946FA70E}|Assembly-CSharp.csproj|solutionrelative:assets\\programs\\scoremanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB96008E-9078-48E5-F436-D8AF946FA70E}|Assembly-CSharp.csproj|C:\\Pemrograman Game\\Advergame\\assets\\programs\\leaderboardreset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BB96008E-9078-48E5-F436-D8AF946FA70E}|Assembly-CSharp.csproj|solutionrelative:assets\\programs\\leaderboardreset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -39,10 +51,6 @@
       "RelativeMoniker": "D:0:0:{BB96008E-9078-48E5-F436-D8AF946FA70E}|Assembly-CSharp.csproj|solutionrelative:assets\\programs\\yosua\\dragfoodbag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB96008E-9078-48E5-F436-D8AF946FA70E}|Assembly-CSharp.csproj|C:\\Pemrograman Game\\Advergame\\assets\\programs\\yosua\\foodbagsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB96008E-9078-48E5-F436-D8AF946FA70E}|Assembly-CSharp.csproj|solutionrelative:assets\\programs\\yosua\\foodbagsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BB96008E-9078-48E5-F436-D8AF946FA70E}|Assembly-CSharp.csproj|C:\\Pemrograman Game\\Advergame\\assets\\programs\\costumer\\customermovement6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BB96008E-9078-48E5-F436-D8AF946FA70E}|Assembly-CSharp.csproj|solutionrelative:assets\\programs\\costumer\\customermovement6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -71,6 +79,31 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "CofeeTransisi.cs",
+              "DocumentMoniker": "C:\\Pemrograman Game\\Advergame\\Assets\\Programs\\Yosua\\CofeeTransisi.cs",
+              "RelativeDocumentMoniker": "Assets\\Programs\\Yosua\\CofeeTransisi.cs",
+              "ToolTip": "C:\\Pemrograman Game\\Advergame\\Assets\\Programs\\Yosua\\CofeeTransisi.cs",
+              "RelativeToolTip": "Assets\\Programs\\Yosua\\CofeeTransisi.cs",
+              "ViewState": "AgIAALAAAAAAAAAAAAAmwMMAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-24T19:09:07.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ScoreManager.cs",
+              "DocumentMoniker": "C:\\Pemrograman Game\\Advergame\\Assets\\Programs\\ScoreManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Programs\\ScoreManager.cs",
+              "ToolTip": "C:\\Pemrograman Game\\Advergame\\Assets\\Programs\\ScoreManager.cs",
+              "RelativeToolTip": "Assets\\Programs\\ScoreManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-24T18:11:44.972Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "LeaderboardReset.cs",
               "DocumentMoniker": "C:\\Pemrograman Game\\Advergame\\Assets\\Programs\\LeaderboardReset.cs",
               "RelativeDocumentMoniker": "Assets\\Programs\\LeaderboardReset.cs",
@@ -78,12 +111,11 @@
               "RelativeToolTip": "Assets\\Programs\\LeaderboardReset.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-28T02:59:31.462Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-28T02:59:31.462Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "CustomerMovement1.cs",
               "DocumentMoniker": "C:\\Pemrograman Game\\Advergame\\Assets\\Programs\\CustomerMovement1.cs",
               "RelativeDocumentMoniker": "Assets\\Programs\\CustomerMovement1.cs",
@@ -94,7 +126,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "CustomerMovement6.cs",
               "DocumentMoniker": "C:\\Pemrograman Game\\Advergame\\Assets\\Programs\\CustomerMovement6.cs",
               "RelativeDocumentMoniker": "Assets\\Programs\\CustomerMovement6.cs",
@@ -106,19 +138,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 1,
               "Title": "FoodBagSystem.cs",
               "DocumentMoniker": "C:\\Pemrograman Game\\Advergame\\Assets\\Programs\\Yosua\\FoodBagSystem.cs",
               "RelativeDocumentMoniker": "Assets\\Programs\\Yosua\\FoodBagSystem.cs",
               "ToolTip": "C:\\Pemrograman Game\\Advergame\\Assets\\Programs\\Yosua\\FoodBagSystem.cs",
               "RelativeToolTip": "Assets\\Programs\\Yosua\\FoodBagSystem.cs",
-              "ViewState": "AgIAAIoAAAAAAAAAAADwv60AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAK4AAAAAAAAAAADwv9EAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-27T16:43:20.478Z"
+              "WhenOpened": "2026-10-27T16:43:20.478Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "DragFoodBag.cs",
               "DocumentMoniker": "C:\\Pemrograman Game\\Advergame\\Assets\\Programs\\Yosua\\DragFoodBag.cs",
               "RelativeDocumentMoniker": "Assets\\Programs\\Yosua\\DragFoodBag.cs",
@@ -130,7 +163,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "CoffeeMachineController.cs",
               "DocumentMoniker": "C:\\Pemrograman Game\\Advergame\\Assets\\Programs\\Yosua\\CoffeeMachineController.cs",
               "RelativeDocumentMoniker": "Assets\\Programs\\Yosua\\CoffeeMachineController.cs",
@@ -142,7 +175,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "CustomerMovement4.cs",
               "DocumentMoniker": "C:\\Pemrograman Game\\Advergame\\Assets\\Programs\\Costumer\\CustomerMovement4.cs",
               "RelativeDocumentMoniker": "Assets\\Programs\\Costumer\\CustomerMovement4.cs",
@@ -154,7 +187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "CustomerMovement3.cs",
               "DocumentMoniker": "C:\\Pemrograman Game\\Advergame\\Assets\\Programs\\Costumer\\CustomerMovement3.cs",
               "RelativeDocumentMoniker": "Assets\\Programs\\Costumer\\CustomerMovement3.cs",
@@ -166,7 +199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "CustomerBagDrop.cs",
               "DocumentMoniker": "C:\\Pemrograman Game\\Advergame\\Assets\\Programs\\CustomerBagDrop.cs",
               "RelativeDocumentMoniker": "Assets\\Programs\\CustomerBagDrop.cs",
@@ -178,7 +211,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "CustomerMovement5.cs",
               "DocumentMoniker": "C:\\Pemrograman Game\\Advergame\\Assets\\Programs\\Costumer\\CustomerMovement5.cs",
               "RelativeDocumentMoniker": "Assets\\Programs\\Costumer\\CustomerMovement5.cs",
@@ -190,7 +223,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "CustomerMovement1.cs",
               "DocumentMoniker": "C:\\Pemrograman Game\\Advergame\\Assets\\Programs\\Costumer\\CustomerMovement1.cs",
               "RelativeDocumentMoniker": "Assets\\Programs\\Costumer\\CustomerMovement1.cs",
@@ -202,7 +235,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "ICustomerOrder.cs",
               "DocumentMoniker": "C:\\Pemrograman Game\\Advergame\\Assets\\Programs\\Yosua\\ICustomerOrder.cs",
               "RelativeDocumentMoniker": "Assets\\Programs\\Yosua\\ICustomerOrder.cs",
@@ -214,7 +247,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "CustomerMovement2.cs",
               "DocumentMoniker": "C:\\Pemrograman Game\\Advergame\\Assets\\Programs\\Costumer\\CustomerMovement2.cs",
               "RelativeDocumentMoniker": "Assets\\Programs\\Costumer\\CustomerMovement2.cs",
@@ -226,7 +259,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "CustomerMovement6.cs",
               "DocumentMoniker": "C:\\Pemrograman Game\\Advergame\\Assets\\Programs\\Costumer\\CustomerMovement6.cs",
               "RelativeDocumentMoniker": "Assets\\Programs\\Costumer\\CustomerMovement6.cs",

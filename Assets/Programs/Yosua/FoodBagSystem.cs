@@ -1,3 +1,4 @@
+
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -11,6 +12,9 @@ public class FoodBagSystem : MonoBehaviour
     public GameObject bagPanel;
     public TMP_Text bagText;
     public Button deliverButton;
+
+    [Header("Score System")]
+    public ScoreManager scoreManager;
 
     private ICustomerOrder selectedCustomer;
 
@@ -30,6 +34,9 @@ public class FoodBagSystem : MonoBehaviour
 
     private void Start()
     {
+        if (scoreManager == null)
+            scoreManager = FindFirstObjectByType<ScoreManager>();
+
         if (bagPanel != null)
             bagPanel.SetActive(false);
 
@@ -46,12 +53,10 @@ public class FoodBagSystem : MonoBehaviour
         if (customer == null)
             return;
 
-        // Customer belum di-accept
         if (customer.CanAcceptOrder())
         {
             customer.AcceptOrder();
         }
-        // Customer sudah di-accept dan masih menunggu
         else if (!customer.IsWaitingForOrder())
         {
             return;
@@ -113,36 +118,11 @@ public class FoodBagSystem : MonoBehaviour
             return;
         }
 
-        bagItems.Clear();
-        selectedCustomer = null;
-
-        UpdateBagUI();
-
-        if (bagPanel != null)
-            bagPanel.SetActive(false);
+        CompleteDelivery();
     }
 
-    private void UpdateBagUI()
-    {
-        if (bagText == null)
-            return;
-
-        if (bagItems.Count == 0)
-        {
-            bagText.text = "Kantong kosong";
-            return;
-        }
-
-        string text = "ISI KANTONG\n";
-
-        foreach (var item in bagItems)
-            text += item.Key + " x" + item.Value + "\n";
-
-        bagText.text = text;
-    }
     public void TryDeliverBagToCustomer(ICustomerOrder targetCustomer)
     {
-
         Debug.Log("CUSTOMER TUJUAN: " + targetCustomer);
         Debug.Log("CUSTOMER TERPILIH: " + selectedCustomer);
 
@@ -170,6 +150,35 @@ public class FoodBagSystem : MonoBehaviour
             return;
         }
 
+        CompleteDelivery();
+
+        Debug.Log("Kantong berhasil diberikan!");
+    }
+
+    private void CompleteDelivery()
+    {
+        // Hitung seluruh item sebelum kantong dikosongkan
+        int totalItems = 0;
+
+        foreach (var item in bagItems)
+        {
+            totalItems += item.Value;
+        }
+
+        // Berikan score
+        if (scoreManager != null)
+        {
+            scoreManager.AddScore(totalItems);
+
+            Debug.Log("TOTAL ITEM: " + totalItems);
+            Debug.Log("SCORE BERHASIL DITAMBAHKAN!");
+        }
+        else
+        {
+            Debug.LogWarning("ScoreManager belum ditemukan!");
+        }
+
+        // Reset data pesanan
         bagItems.Clear();
         selectedCustomer = null;
 
@@ -177,7 +186,24 @@ public class FoodBagSystem : MonoBehaviour
 
         if (bagPanel != null)
             bagPanel.SetActive(false);
+    }
 
-        Debug.Log("Kantong berhasil diberikan!");
+    private void UpdateBagUI()
+    {
+        if (bagText == null)
+            return;
+
+        if (bagItems.Count == 0)
+        {
+            bagText.text = "Kantong kosong";
+            return;
+        }
+
+        string text = "ISI KANTONG\n";
+
+        foreach (var item in bagItems)
+            text += item.Key + " x" + item.Value + "\n";
+
+        bagText.text = text;
     }
 }

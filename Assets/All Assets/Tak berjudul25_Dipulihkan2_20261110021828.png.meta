@@ -1,16 +1,13 @@
 fileFormatVersion: 2
-guid: bb58ed297465bf0409ec267b18bf49cf
+guid: 44fe7e084a0214f4da5bb3b2eda57c25
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1809778973172381243
-    second: UI Main Menu_0
+      213: -4347055839917716782
+    second: Tak berjudul25_Dipulihkan2_20261110021828_0
   - first:
-      213: -2655915121257140110
-    second: UI Main Menu_1
-  - first:
-      213: -8645918073313090914
-    second: UI Main Menu_2
+      213: 5803242838639187389
+    second: Tak berjudul25_Dipulihkan2_20261110021828_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -92,7 +89,85 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: VisionOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -108,13 +183,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI Main Menu_0
+      name: Tak berjudul25_Dipulihkan2_20261110021828_0
       rect:
         serializedVersion: 2
-        x: 55
-        y: 208
-        width: 533
-        height: 521
+        x: 127
+        y: 147
+        width: 574
+        height: 580
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -123,20 +198,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5c9c61ecc9f52e6e0800000000000000
-      internalID: -1809778973172381243
+      spriteID: 2dacaeaceb72ca3c0800000000000000
+      internalID: -4347055839917716782
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI Main Menu_1
+      name: Tak berjudul25_Dipulihkan2_20261110021828_1
       rect:
         serializedVersion: 2
-        x: 623
-        y: 210
-        width: 528
-        height: 519
+        x: 742
+        y: 147
+        width: 575
+        height: 580
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,30 +220,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 27031e3d44b442bd0800000000000000
-      internalID: -2655915121257140110
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI Main Menu_2
-      rect:
-        serializedVersion: 2
-        x: 1186
-        y: 208
-        width: 533
-        height: 520
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e922b030257830880800000000000000
-      internalID: -8645918073313090914
+      spriteID: db51b666d92498050800000000000000
+      internalID: 5803242838639187389
       vertices: []
       indices: 
       edges: []
@@ -187,9 +240,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      UI Main Menu_0: -1809778973172381243
-      UI Main Menu_1: -2655915121257140110
-      UI Main Menu_2: -8645918073313090914
+      Tak berjudul25_Dipulihkan2_20261110021828_0: -4347055839917716782
+      Tak berjudul25_Dipulihkan2_20261110021828_1: 5803242838639187389
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

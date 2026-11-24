@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 9f192c962d3b4de4cb378218d7bb13d7
+guid: 8776bc25eb59bf245a8b078ff87ed2c1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3336974458172070715
-    second: UI Settings Sound_0
+      213: 8300829836025860809
+    second: Tak berjudul25_Dipulihkan2_20261118015332_0
   - first:
-      213: -1879797896895954575
-    second: UI Settings Sound_1
+      213: 8706516563171981636
+    second: Tak berjudul25_Dipulihkan2_20261118015332_1
   - first:
-      213: -4097522277546947625
-    second: UI Settings Sound_2
+      213: 3023861208706995786
+    second: Tak berjudul25_Dipulihkan2_20261118015332_2
   - first:
-      213: -7162223569982595187
-    second: UI Settings Sound_3
+      213: 555905246284242588
+    second: Tak berjudul25_Dipulihkan2_20261118015332_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -95,7 +95,85 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: VisionOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -111,89 +189,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI Settings Sound_0
+      name: Tak berjudul25_Dipulihkan2_20261118015332_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 268
-        width: 418
-        height: 400
+        x: 59
+        y: 284
+        width: 326
+        height: 326
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5c42a1c096fa0b1d0800000000000000
-      internalID: -3336974458172070715
+      spriteID: 9c2194591c8723370800000000000000
+      internalID: 8300829836025860809
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI Settings Sound_1
+      name: Tak berjudul25_Dipulihkan2_20261118015332_1
       rect:
         serializedVersion: 2
-        x: 463
-        y: 269
-        width: 412
-        height: 399
+        x: 402
+        y: 283
+        width: 325
+        height: 329
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1718df9b5cd99e5e0800000000000000
-      internalID: -1879797896895954575
+      spriteID: 449bbe26fa2c3d870800000000000000
+      internalID: 8706516563171981636
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI Settings Sound_2
+      name: Tak berjudul25_Dipulihkan2_20261118015332_2
       rect:
         serializedVersion: 2
-        x: 899
-        y: 269
-        width: 415
-        height: 399
+        x: 741
+        y: 284
+        width: 321
+        height: 329
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7db809bb23da227c0800000000000000
-      internalID: -4097522277546947625
+      spriteID: a46501b8fb9e6f920800000000000000
+      internalID: 3023861208706995786
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI Settings Sound_3
+      name: Tak berjudul25_Dipulihkan2_20261118015332_3
       rect:
         serializedVersion: 2
-        x: 1336
-        y: 269
-        width: 416
-        height: 400
+        x: 1073
+        y: 283
+        width: 335
+        height: 331
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d8fd1453c9baa9c90800000000000000
-      internalID: -7162223569982595187
+      spriteID: c9e5c8d40e8f6b700800000000000000
+      internalID: 555905246284242588
       vertices: []
       indices: 
       edges: []
@@ -202,8 +280,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
-    internalID: 0
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
@@ -212,10 +290,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      UI Settings Sound_0: -3336974458172070715
-      UI Settings Sound_1: -1879797896895954575
-      UI Settings Sound_2: -4097522277546947625
-      UI Settings Sound_3: -7162223569982595187
+      Tak berjudul25_Dipulihkan2_20261118015332_0: 8300829836025860809
+      Tak berjudul25_Dipulihkan2_20261118015332_1: 8706516563171981636
+      Tak berjudul25_Dipulihkan2_20261118015332_2: 3023861208706995786
+      Tak berjudul25_Dipulihkan2_20261118015332_3: 555905246284242588
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

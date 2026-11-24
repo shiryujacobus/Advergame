@@ -656,7 +656,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1809778973172381243, guid: bb58ed297465bf0409ec267b18bf49cf, type: 3}
+  m_Sprite: {fileID: -3871598159504814063, guid: 42005ae36f364dd4a887c86cc9e338ac, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -962,7 +962,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7640945836025305926, guid: dd3fa41095d00d74d82f0a5d6ece7752, type: 3}
+  m_Sprite: {fileID: -8210242063791666889, guid: 42005ae36f364dd4a887c86cc9e338ac, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1288,7 +1288,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3336974458172070715, guid: 9f192c962d3b4de4cb378218d7bb13d7, type: 3}
+  m_Sprite: {fileID: 5803242838639187389, guid: 44fe7e084a0214f4da5bb3b2eda57c25, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1409,7 +1409,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8645918073313090914, guid: bb58ed297465bf0409ec267b18bf49cf, type: 3}
+  m_Sprite: {fileID: 869688993017328689, guid: 42005ae36f364dd4a887c86cc9e338ac, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1617,10 +1617,10 @@ MonoBehaviour:
   - {fileID: 300635275}
   soundButtonImage: {fileID: 486842626}
   musicButtonImage: {fileID: 959132029}
-  soundOnIcon: {fileID: -3336974458172070715, guid: 9f192c962d3b4de4cb378218d7bb13d7, type: 3}
-  soundOffIcon: {fileID: -1879797896895954575, guid: 9f192c962d3b4de4cb378218d7bb13d7, type: 3}
-  musicOnIcon: {fileID: -4097522277546947625, guid: 9f192c962d3b4de4cb378218d7bb13d7, type: 3}
-  musicOffIcon: {fileID: -7162223569982595187, guid: 9f192c962d3b4de4cb378218d7bb13d7, type: 3}
+  soundOnIcon: {fileID: 5803242838639187389, guid: 44fe7e084a0214f4da5bb3b2eda57c25, type: 3}
+  soundOffIcon: {fileID: 555905246284242588, guid: 8776bc25eb59bf245a8b078ff87ed2c1, type: 3}
+  musicOnIcon: {fileID: -4347055839917716782, guid: 44fe7e084a0214f4da5bb3b2eda57c25, type: 3}
+  musicOffIcon: {fileID: 3023861208706995786, guid: 8776bc25eb59bf245a8b078ff87ed2c1, type: 3}
 --- !u!1 &868472965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1952,7 +1952,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4097522277546947625, guid: 9f192c962d3b4de4cb378218d7bb13d7, type: 3}
+  m_Sprite: {fileID: -4347055839917716782, guid: 44fe7e084a0214f4da5bb3b2eda57c25, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2850,7 +2850,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2655915121257140110, guid: bb58ed297465bf0409ec267b18bf49cf, type: 3}
+  m_Sprite: {fileID: -3848668681150246965, guid: 42005ae36f364dd4a887c86cc9e338ac, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3238,7 +3238,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8754852077593658895, guid: 695b17913cd57694fa9a9d508022f4b0, type: 3}
+  m_Sprite: {fileID: -5802813604198296659, guid: 42005ae36f364dd4a887c86cc9e338ac, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3299,7 +3299,7 @@ PrefabInstance:
     - target: {fileID: 2617953034433303647, guid: bb13cce1067edf541884fce6862e6582, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7029538616786372103, guid: 1ef400d7be45ed841b88ced2ef8bdeb1, type: 3}
+      objectReference: {fileID: 8300829836025860809, guid: 8776bc25eb59bf245a8b078ff87ed2c1, type: 3}
     - target: {fileID: 3403051931347211978, guid: bb13cce1067edf541884fce6862e6582, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -34

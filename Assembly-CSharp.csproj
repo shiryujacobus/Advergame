@@ -69,6 +69,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.6.0f1\Editor\Data\BCLExtensions\TargetingPacks\netstandard2.1\analyzers\dotnet\roslyn4.0\cs\System.Text.Json.SourceGeneration.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Programs\InGameSettingController.cs" />
     <Compile Include="Assets\Programs\IntroManager.cs" />
     <Compile Include="Assets\Programs\MainMenuManager.cs" />
     <Compile Include="Assets\Programs\DraggableCoffee.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Assets\Programs\AudioSettingsManager.cs" />
     <Compile Include="Assets\Programs\Costumer\CustomerMovement5.cs" />
     <Compile Include="Assets\Programs\Costumer\CustomerMovement6.cs" />
+    <Compile Include="Assets\Programs\Yosua\CofeeTransisi.cs" />
     <Compile Include="Assets\Programs\LeaderboardManager.cs" />
     <Compile Include="Assets\Programs\GameManager.cs" />
     <Compile Include="Assets\Programs\Costumer\CustomerMovement3.cs" />
@@ -91,10 +93,12 @@
     <Compile Include="Assets\Programs\Costumer\CustomerMovement2.cs" />
     <Compile Include="Assets\Programs\Yosua\CoffeeMachineController.cs" />
     <Compile Include="Assets\Programs\CustomerQueueManager.cs" />
+    <Compile Include="Assets\Programs\InGameAudioSettings.cs" />
     <Compile Include="Assets\Programs\CustomerBagDrop.cs" />
     <Compile Include="Assets\Programs\Yosua\DragFoodBag.cs" />
     <Compile Include="Assets\Programs\MainMenuLeaderboard.cs" />
     <Compile Include="Assets\Programs\CodeSystem.cs" />
+    <Compile Include="Assets\Programs\BackButton.cs" />
     <Compile Include="Assets\Programs\SelfClickFood.cs" />
     <Compile Include="Assets\Programs\ScoreManager.cs" />
     <Compile Include="Assets\Programs\CoffeeStation.cs" />

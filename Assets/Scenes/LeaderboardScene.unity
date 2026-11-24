@@ -421,7 +421,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7029538616786372103, guid: 1ef400d7be45ed841b88ced2ef8bdeb1, type: 3}
+  m_Sprite: {fileID: 8300829836025860809, guid: 8776bc25eb59bf245a8b078ff87ed2c1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1072,6 +1072,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5701710909266410925, guid: 5e2f53bded3af4649b58ed63f64b3caf, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: be1c01428b63ec5489de64cd62e70f1b, type: 3}
     - target: {fileID: 8011519869273827128, guid: 5e2f53bded3af4649b58ed63f64b3caf, type: 3}
       propertyPath: m_Name
       value: LeaderboardRow

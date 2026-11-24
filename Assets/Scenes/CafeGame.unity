@@ -2240,6 +2240,7 @@ MonoBehaviour:
   bagPanel: {fileID: 210170730}
   bagText: {fileID: 0}
   deliverButton: {fileID: 0}
+  scoreManager: {fileID: 2080226948}
 --- !u!1 &369927474
 GameObject:
   m_ObjectHideFlags: 0
@@ -2430,7 +2431,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7640945836025305926, guid: dd3fa41095d00d74d82f0a5d6ece7752, type: 3}
+  m_Sprite: {fileID: -8210242063791666889, guid: 42005ae36f364dd4a887c86cc9e338ac, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2925,7 +2926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3edf53fcf3d479343855e3e7d6aef156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameTimer
-  timeRemaining: 60
+  timeRemaining: 90
   timerText: {fileID: 619443539}
   timeUpPanel: {fileID: 419215064}
   scoreManager: {fileID: 2080226948}
@@ -5930,7 +5931,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4097522277546947625, guid: 9f192c962d3b4de4cb378218d7bb13d7, type: 3}
+  m_Sprite: {fileID: -4347055839917716782, guid: 44fe7e084a0214f4da5bb3b2eda57c25, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9472,10 +9473,10 @@ MonoBehaviour:
   - {fileID: 1531632598}
   soundButtonImage: {fileID: 1874040922}
   musicButtonImage: {fileID: 726621487}
-  soundOnIcon: {fileID: -3336974458172070715, guid: 9f192c962d3b4de4cb378218d7bb13d7, type: 3}
-  soundOffIcon: {fileID: -1879797896895954575, guid: 9f192c962d3b4de4cb378218d7bb13d7, type: 3}
-  musicOnIcon: {fileID: -4097522277546947625, guid: 9f192c962d3b4de4cb378218d7bb13d7, type: 3}
-  musicOffIcon: {fileID: -7162223569982595187, guid: 9f192c962d3b4de4cb378218d7bb13d7, type: 3}
+  soundOnIcon: {fileID: 5803242838639187389, guid: 44fe7e084a0214f4da5bb3b2eda57c25, type: 3}
+  soundOffIcon: {fileID: 555905246284242588, guid: 8776bc25eb59bf245a8b078ff87ed2c1, type: 3}
+  musicOnIcon: {fileID: -4347055839917716782, guid: 44fe7e084a0214f4da5bb3b2eda57c25, type: 3}
+  musicOffIcon: {fileID: 3023861208706995786, guid: 8776bc25eb59bf245a8b078ff87ed2c1, type: 3}
 --- !u!1 &1287828382
 GameObject:
   m_ObjectHideFlags: 0
@@ -12426,7 +12427,7 @@ PrefabInstance:
     - target: {fileID: 2617953034433303647, guid: bb13cce1067edf541884fce6862e6582, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7029538616786372103, guid: 1ef400d7be45ed841b88ced2ef8bdeb1, type: 3}
+      objectReference: {fileID: 8300829836025860809, guid: 8776bc25eb59bf245a8b078ff87ed2c1, type: 3}
     - target: {fileID: 3546236565840506885, guid: bb13cce1067edf541884fce6862e6582, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -13353,7 +13354,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3336974458172070715, guid: 9f192c962d3b4de4cb378218d7bb13d7, type: 3}
+  m_Sprite: {fileID: 5803242838639187389, guid: 44fe7e084a0214f4da5bb3b2eda57c25, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14548,6 +14549,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
   totalScore: 0
   ordersAccepted: 0
+  totalItemsSold: 0
+  pointPerItem: 25
 --- !u!1 &2086795046
 GameObject:
   m_ObjectHideFlags: 0
