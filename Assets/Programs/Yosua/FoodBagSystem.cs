@@ -48,8 +48,6 @@ public class FoodBagSystem : MonoBehaviour
 
     public void SelectCustomer(ICustomerOrder customer)
     {
-        Debug.Log("CUSTOMER DIPILIH: " + customer);
-
         if (customer == null)
             return;
 
@@ -70,22 +68,16 @@ public class FoodBagSystem : MonoBehaviour
 
         UpdateBagUI();
 
-        Debug.Log("Pesanan customer berhasil dipilih!");
+        Debug.Log("Customer berhasil dipilih!");
     }
 
     public void AddFood(string itemName)
     {
         if (selectedCustomer == null)
-        {
-            Debug.Log("Klik customer terlebih dahulu!");
             return;
-        }
 
         if (!selectedCustomer.IsWaitingForOrder())
-        {
-            Debug.Log("Customer tidak sedang menunggu pesanan.");
             return;
-        }
 
         if (!selectedCustomer.AddItemToBag(itemName))
             return;
@@ -101,16 +93,10 @@ public class FoodBagSystem : MonoBehaviour
     public void DeliverBag()
     {
         if (selectedCustomer == null)
-        {
-            Debug.Log("Belum memilih customer!");
             return;
-        }
 
         if (bagItems.Count == 0)
-        {
-            Debug.Log("Kantong masih kosong!");
             return;
-        }
 
         if (!selectedCustomer.DeliverBag())
         {
@@ -123,26 +109,17 @@ public class FoodBagSystem : MonoBehaviour
 
     public void TryDeliverBagToCustomer(ICustomerOrder targetCustomer)
     {
-        Debug.Log("CUSTOMER TUJUAN: " + targetCustomer);
-        Debug.Log("CUSTOMER TERPILIH: " + selectedCustomer);
-
         if (targetCustomer == null)
-        {
-            Debug.Log("Customer tidak ditemukan!");
             return;
-        }
 
         if (selectedCustomer != targetCustomer)
         {
-            Debug.Log("Pilih customer yang sesuai dengan kantong!");
+            Debug.Log("Customer tidak sesuai!");
             return;
         }
 
         if (bagItems.Count == 0)
-        {
-            Debug.Log("Kantong masih kosong!");
             return;
-        }
 
         if (!targetCustomer.DeliverBag())
         {
@@ -155,30 +132,24 @@ public class FoodBagSystem : MonoBehaviour
         Debug.Log("Kantong berhasil diberikan!");
     }
 
-    private void CompleteDelivery()
+    // DIPANGGIL KETIKA WAKTU CUSTOMER HABIS
+    public void CancelBagForCustomer(ICustomerOrder customer)
     {
-        // Hitung seluruh item sebelum kantong dikosongkan
-        int totalItems = 0;
+        if (customer == null)
+            return;
 
-        foreach (var item in bagItems)
-        {
-            totalItems += item.Value;
-        }
+        // Pastikan hanya kantong milik customer tersebut yang dihapus
+        if (selectedCustomer != customer)
+            return;
 
-        // Berikan score
-        if (scoreManager != null)
-        {
-            scoreManager.AddScore(totalItems);
+        Debug.Log("WAKTU HABIS! KANTONG DIHAPUS.");
 
-            Debug.Log("TOTAL ITEM: " + totalItems);
-            Debug.Log("SCORE BERHASIL DITAMBAHKAN!");
-        }
-        else
-        {
-            Debug.LogWarning("ScoreManager belum ditemukan!");
-        }
+        ResetBag();
+    }
 
-        // Reset data pesanan
+    // RESET SELURUH DATA KANTONG
+    public void ResetBag()
+    {
         bagItems.Clear();
         selectedCustomer = null;
 
@@ -186,6 +157,26 @@ public class FoodBagSystem : MonoBehaviour
 
         if (bagPanel != null)
             bagPanel.SetActive(false);
+
+        Debug.Log("Kantong kembali ke kondisi awal!");
+    }
+
+    private void CompleteDelivery()
+    {
+        int totalItems = 0;
+
+        foreach (var item in bagItems)
+        {
+            totalItems += item.Value;
+        }
+
+        if (scoreManager != null)
+        {
+            scoreManager.AddScore(totalItems);
+            Debug.Log("Score bertambah: " + totalItems);
+        }
+
+        ResetBag();
     }
 
     private void UpdateBagUI()
@@ -202,7 +193,9 @@ public class FoodBagSystem : MonoBehaviour
         string text = "ISI KANTONG\n";
 
         foreach (var item in bagItems)
+        {
             text += item.Key + " x" + item.Value + "\n";
+        }
 
         bagText.text = text;
     }

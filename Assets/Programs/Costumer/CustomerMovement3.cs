@@ -257,10 +257,18 @@ public class CustomerMovement3 : MonoBehaviour, ICustomerOrder
                         patienceBar.color = Color.red;
                 }
 
+
                 if (patienceTimer <= 0f)
                 {
-                    Debug.Log("CUSTOMER 1 KEHABISAN KESABARAN!");
+                    Debug.Log("CUSTOMER 3 KEHABISAN KESABARAN!");
 
+                    // Hapus package milik customer ini
+                    if (FoodBagSystem.Instance != null)
+                    {
+                        FoodBagSystem.Instance.CancelBagForCustomer(this);
+                    }
+
+                    // Customer mulai meninggalkan tempat
                     state = 2;
 
                     if (orderPanel != null)
@@ -268,7 +276,10 @@ public class CustomerMovement3 : MonoBehaviour, ICustomerOrder
 
                     if (patienceBar != null)
                         patienceBar.gameObject.SetActive(false);
+
+                    Debug.Log("PACKAGE DIHAPUS! CUSTOMER 3 PERGI.");
                 }
+
             }
         }
 
@@ -439,8 +450,7 @@ public class CustomerMovement3 : MonoBehaviour, ICustomerOrder
         if (orderPanel != null)
             orderPanel.SetActive(false);
 
-        if (scoreManager != null)
-            scoreManager.AddScore(100);
+
 
         Debug.Log("PESANAN SELESAI! CUSTOMER PERGI.");
 
